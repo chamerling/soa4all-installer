@@ -1,0 +1,1 @@
+This is the SOA4All installer repository

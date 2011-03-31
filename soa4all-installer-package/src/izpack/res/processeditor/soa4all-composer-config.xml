@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!-- The URL of the Web Service WSDL of the Human task SOA4All platform 
+		service. -->
+	<entry key="services-hts-endpoint">$installer.processeditor.humantask</entry>
+	<!-- The URL of the Web Service WSDL of the Design Time Composer SOA4All 
+		platform service -->
+	<entry key="services-dtc-endpoint">$installer.processeditor.dtc</entry>
+	<!-- The URL of the Web Service WSDL of the Optimizer SOA4All platform service -->
+	<entry key="services-opt-endpoint">$installer.processeditor.optimizer</entry>
+	<!-- The URL of the Web Service WSDL of the Deployment service for the SOA4All 
+		Execution Engine platform service -->
+	<entry key="services-dpl-endpoint">$installer.processeditor.deployer</entry>
+	<!-- Proxy host mediating the communication between the SOA4All Composer 
+		services and the other SOA4All services. Optional parameter. -->
+	<!-- <entry key="proxy-host">proxy</entry>-->
+	<!-- Proxy port. A valid port in the range [0 - 65535]. Must be specified 
+		only if proxy-host is specified. -->
+	<!-- <entry key="proxy-port">8080</entry>-->
+</properties>

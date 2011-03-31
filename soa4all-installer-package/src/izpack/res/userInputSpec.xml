@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<userInput>
+
+	<panel id="tomcat">
+		<createForPack name="Tomcat" />
+		<field type="title" txt="Tomcat Configuration" />
+		<field type="staticText" align="left"
+			txt="Fill the required fields to define ports. Default values should work if no other Tomcat server is already running on the current host" />
+		<field type="space" />
+		<field type="staticText" align="left" txt="Host configuration" />
+		<field type="text" variable="installer.tomcat.hostname">
+			<spec txt="Hostname : " size="20" set="localhost" />
+		</field>
+		<field type="staticText" align="left" txt="Port configuration" />
+		<field type="text" variable="installer.tomcat.http">
+			<spec txt="HTTP : " size="10" set="8080" />
+		</field>
+		<field type="text" variable="installer.tomcat.ajp">
+			<spec txt="AJP : " size="10" set="8009" />
+		</field>
+		<field type="text" variable="installer.tomcat.shutdown">
+			<spec txt="Shutdown : " size="10" set="8005" />
+		</field>
+		<field type="text" variable="installer.tomcat.redirect">
+			<spec txt="Redirect : " size="10" set="8443" />
+		</field>
+		<field type="space" />
+		<field type="staticText" align="left"
+			txt="Please give a password for 'soa4all' user. These are the Tomcat management credentials." />
+		<field type="text" variable="installer.tomcat.soa4allpassword">
+			<spec txt="Password for user 'soa4all' : " size="10" set="soa4all" />
+		</field>
+		<field type="space" />
+		<field type="space" />
+		<field type="staticText" align="left"
+			txt="Note : Apache Tomcat server will be installed under the '$INSTALL_PATH/apache-tomcat' directory, click 'Next' for next installation step..." />
+	</panel>
+	
+	<panel id="database">
+		<createForPack name="Database" />
+		<field type="title" txt="Database Configuration" />
+		<field type="staticText" align="left"
+			txt="The SOA4All platform is not delivered with a database but provides a simple way too configure a connection to an existing one. Fill the required fields to define database properties" />
+		<field type="space" />
+		<field type="staticText" align="left" txt="Driver" />
+		<field type="text" variable="installer.database.driver">
+			<description align="left" />
+			<spec txt="Driver : " size="30" set="org.hsqldb.jdbcDriver" />
+		</field>
+		<field type="text" variable="installer.database.url">
+			<description align="left" />
+			<spec txt="URL : " size="30" set="jdbc:hsqldb:hsql://localhost" />
+		</field>
+		<field type="text" variable="installer.database.user">
+			<description align="left" />
+			<spec txt="User : " size="30" set="sa" />
+		</field>
+		<field type="text" variable="installer.database.password">
+			<description align="left" />
+			<spec txt="Password : " size="30" set="" />
+		</field>
+	</panel>
+	
+	<panel id="sesame">
+		<createForPack name="Sesame" />
+		<field type="title" txt="Sesame Configuration" />
+		<field type="staticText" align="left"
+			txt="No parameters to define" />
+		<field type="space" />
+		<field type="space" />
+		<!-- TODO : Use Local or Remote instance! -->
+		<field type="staticText" align="left"
+			txt="Note : The Sesame Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/openrdf-sesame, click 'Next' for next installation step..." />
+	</panel>
+
+	<panel id="dashboard">
+		<createForPack name="Dashboard" />
+		<field type="title" txt="Dashboard Configuration" />
+		<field type="staticText" align="left"
+			txt="No parameters to define" />
+		<field type="space" />
+		<field type="space" />
+
+		<field type="staticText" align="left"
+			txt="Note : The Dashboard Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-coredashboard-gwt-main, click 'Next' for next installation step..." />
+	</panel>
+	
+	<panel id="spices">
+		<createForPack name="Spices" />
+		<field type="title" txt="Spices Configuration" />
+		<field type="staticText" align="left"
+			txt="No parameters to define" />
+		<field type="space" />
+		<field type="space" />
+		
+		<field type="staticText" align="left"
+			txt="Note : The Spices Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-consumptionplatform-webapp, click 'Next' for next installation step..." />
+	</panel>
+
+	<!-- linkeduserfeedback module configuration -->
+	<panel id="luf">
+		<createForPack name="Linkeduserfeedback" />
+		<field type="title" txt="Linked User Feedback Configuration" />
+		<field type="staticText" align="left"
+			txt="Define Linked User Feedback Parameters" />
+		<field type="space" />
+		<field type="space" />
+ 
+		<field type="text" variable="installer.linkeduserfeedback.sesameServerURL">
+			<spec txt="Sesame Server URL : " size="100"
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/openrdf-sesame" />
+		</field>
+		<field type="text" variable="installer.sesame.repo.luf">
+			<spec txt="Sesame Repository Name : " size="100" set="LUF" />
+		</field>
+		<!-- FIXME : Is it the local instance? -->
+		<field type="text" variable="installer.linkeduserfeedback.LUFBaseUri">
+			<spec txt="LUFBaseUri *FIXME : local instance?*: " size="100" set="http://soa4all.isoco.net/luf/" />
+		</field>
+		<field type="space" />
+		<field type="space" />
+		
+		<field type="staticText" align="left"
+			txt="Note : The Linked User Feedback Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/linkeduserfeedback, click 'Next' for next installation step..." />
+	</panel>
+	
+	<!-- Design Time Composer -->
+	<panel id="dtc">
+		<createForPack name="DesignTimeComposer" />
+		<field type="title" txt="Design Time Composer Configuration" />
+		<field type="staticText" align="left"
+			txt="Define Design Time Composer Parameters" />
+		<field type="space" />
+		<field type="space" />
+
+		<field type="text" variable="installer.designtimecomposer.servicediscoveryserviceendpoint">
+			<spec txt="Service Discovery Service (WSDL) *FIXME : Local service?* : " size="100"
+				set="http://km.aifb.kit.edu/services/soa4all-discovery/axis2/services/ServiceDiscovery?wsdl" />
+		</field>
+		<field type="text" variable="installer.designtimecomposer.semanticlinkoperator">
+			<spec txt="Semantic Link Operator Endpoint : " size="100" 
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/semantic-link-operator/services/SemanticLinkOperator"/>
+		</field>
+		<field type="space" />
+		<field type="space" />
+		
+		<field type="staticText" align="left"
+			txt="Note : The Design Time Composer Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-service-construction-design-time-composer, click 'Next' for next installation step..." />
+	
+	</panel>
+	
+	<!-- SEmantic Link Operator -->
+	<panel id="slo">
+		<createForPack name="SemanticLinkOperator" />
+		<field type="title" txt="Semantic Link Operator Configuration" />
+		<field type="staticText" align="left"
+			txt="No parameters to define" />
+		<field type="space" />
+		<field type="space" />
+		<field type="staticText" align="left"
+			txt="Note : The Semantic Link Operator will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/semantic-link-operator/, click 'Next' for next installation step..." />
+	</panel>
+	
+	<panel id="optimizer">
+		<createForPack name="Optimizer" />
+		<field type="title" txt="Service Construction Optimizer Configuration" />
+		<field type="staticText" align="left"
+			txt="No parameters to define" />
+		<field type="space" />
+		<field type="space" />
+		<field type="staticText" align="left"
+			txt="Note : The Service Construction Optimizer will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-service-construction-optimizer/, click 'Next' for next installation step..." />
+	</panel>
+	
+	<panel id="processeditor">
+		<createForPack name="ProcessEditor"/>
+		<field type="title" txt="Process Editor Configuration" />
+		<field type="staticText" align="left"
+			txt="Define Process Editor Parameters" />
+		<field type="space" />
+		<field type="space" />
+
+		<field type="text" variable="installer.processeditor.humantask">
+			<spec txt="Human Tasks Service Service (WSDL): *FIXME : Explain*" size="100"
+				set="http://213.27.211.120:9080/axis2/services/TaskManagementServices?wsdl" />
+		</field>
+		<field type="text" variable="installer.processeditor.dtc">
+			<spec txt="Design Time Composer Service (WSDL): *FIXME : Axis2 service URL*" size="100" 
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-service-construction-design-time-composer/services/DTComposer?wsdl"/>
+		</field>
+		<field type="text" variable="installer.processeditor.optimizer">
+			<spec txt="Optimizer Service (WSDL): *FIXME : Axis2 service URL*" size="100" 
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-service-construction-optimizer/services/services/KPI-Optimizer?wsdl"/>
+		</field>
+		<field type="text" variable="installer.processeditor.deployer">
+			<spec txt="Deployer Service (WSDL): *FIXME : Local component?*" size="100" 
+				set="http://demo.cefriel.it:8084/axis2/services/LPMDeployer?wsdl"/>
+		</field>
+		<field type="space" />
+		<field type="space" />
+		
+		<field type="staticText" align="left"
+			txt="Note : The Process Editor Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-dashboard-gwt-module-composer, click 'Next' for next installation step..." />
+	</panel>
+	
+	<panel id="iserve">
+		<createForPack name="iServe" />
+		<field type="title" txt="iServe Configuration" />
+		<field type="staticText" align="left"
+			txt="Define iServe Parameters" />
+		<field type="space" />
+		<field type="space" />
+
+		<field type="text" variable="installer.iserve.servername">
+			<spec txt="Server Name : " size="100"
+				set="iserve" />
+		</field>
+		<field type="text" variable="installer.iserve.sesameserverurl">
+			<spec txt="Sesame Server URL : " size="100" 
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/openrdf-sesame"/>
+		</field>
+		<field type="text" variable="installer.sesame.repo.iserve">
+			<spec txt="Sesame Repository Name : " size="100" 
+				set="serv_repo_owlim"/>
+		</field>
+		<field type="text" variable="installer.iserve.logserverurl">
+			<spec txt="Logs Server URL : " size="100" 
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/openrdf-sesame"/>
+		</field>
+		<field type="text" variable="installer.sesame.repo.iservelogs">
+			<spec txt="Logs Repository Name : " size="100" 
+				set="iserve-logs"/>
+		</field>
+		<field type="text" variable="installer.iserve.luf">
+			<spec txt="Linked User Feedback URL : " size="100" 
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/linkeduserfeedback"/>
+		</field>
+		<field type="space" />
+		<field type="space" />
+		<field type="staticText" align="left"
+			txt="Note : iServe will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-iserve/, click 'Next' for next installation step..." />
+	</panel>
+	
+	<panel id="groundingeditor">
+		<createForPack name="GroundingEditor" />
+		<field type="title" txt="Grounding Editor Configuration" />
+		<field type="staticText" align="left"
+			txt="No parameters to define" />
+		<field type="space" />
+		<field type="space" />
+		<field type="staticText" align="left"
+			txt="Note : The Grounding Editor Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/studio-grounding-editor/, click 'Next' for next installation step..." />
+	</panel>
+	
+	<panel id="groundingservice">
+		<createForPack name="GroundingService" />
+		<field type="title" txt="Grounding Service Configuration" />
+		<field type="staticText" align="left"
+			txt="No parameters to define" />
+		<field type="space" />
+		<field type="space" />
+		<field type="staticText" align="left"
+			txt="Note : The Grounding Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/studio-grounding-service/, click 'Next' for next installation step..." />
+	</panel>
+	
+	<panel id="storage">
+		<createForPack name="Storage" />
+		<field type="title" txt="Storage Configuration" />
+		<field type="staticText" align="left"
+			txt="No parameters to define" />
+		<field type="space" />
+		<field type="space" />
+		<field type="staticText" align="left"
+			txt="Note : The Storage Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/studio-storage/, click 'Next' for next installation step..." />
+	</panel>
+	
+	<panel id="wsmolite">
+		<createForPack name="WSMOLite" />
+		<field type="title" txt="WSMO Lite Configuration" />
+		<field type="staticText" align="left"
+			txt="No parameters to define" />
+		<field type="space" />
+		<field type="space" />
+		<field type="staticText" align="left"
+			txt="Note : The WSMO Lite Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/studio-wsmolite-editor/, click 'Next' for next installation step..." />
+	</panel>
+	
+	<panel id="sweet">
+		<createForPack name="Sweet" />
+		<field type="title" txt="Sweet Configuration" />
+		<field type="staticText" align="left"
+			txt="Define Sweet Parameters" />
+		<field type="space" />
+		<field type="space" />
+		
+		<field type="text" variable="installer.sweet.servername">
+			<spec txt="Server Name : " size="100"
+				set="iserve-dev.kmi.open.ac.uk/iserve" />
+		</field>
+		<field type="text" variable="installer.sweet.sesameserverurl">
+			<spec txt="Sesame Server URL : " size="100" 
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/openrdf-sesame"/>
+		</field>
+		<field type="text" variable="installer.sesame.repo.sweet">
+			<spec txt="Sesame Repository Name : " size="100" 
+				set="serv_repo_owlim"/>
+		</field>
+		<field type="text" variable="installer.sweet.logserverurl">
+			<spec txt="Logs Server URL : " size="100" 
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/openrdf-sesame"/>
+		</field>
+		<field type="text" variable="installer.sesame.repo.sweetlogs">
+			<spec txt="Logs Repository Name : " size="100" 
+				set="sweet-logs"/>
+		</field>
+		<field type="text" variable="installer.sweet.docfolder">
+			<spec txt="Path to documentation (optional): " size="100" 
+				set=""/>
+		</field>
+		<field type="space" />
+		<field type="staticText" align="left"
+			txt="Note : The Sweet Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/studio-sweet/, click 'Next' for next installation step..." />
+	</panel>
+</userInput>

@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<installation version="1.0">
+	<info>
+		<appname>SOA4All</appname>
+		<appversion>1.0</appversion>
+		<authors>
+			<author name="SOA4All Consortium" email="contact@soa4all.oeu" />
+		</authors>
+		<url>http://soa4all.eu</url>
+		<javaversion>1.5</javaversion>
+		<!-- <run-privileged condition="izpack.windowsinstall.vista|izpack.macinstall" 
+			/> -->
+		<!-- webdir is only used when Web installer is generated, this is where 
+			packs need to be available -->
+		<webdir>http://soa4all.eu/installer/</webdir>
+	</info>
+	<!-- The gui preferences indication. -->
+	<guiprefs width="1024" height="680" resizable="yes">
+		<laf name="kunststoff">
+			<os family="unix" />
+		</laf>
+		<modifier key="layoutAnchor" value="CENTER" />
+		<modifier key="labelGap" value="2" />
+		<modifier key="useHeadingPanel" value="yes" />
+		<modifier key="headingImageOnLeft" value="yes" />
+		<modifier key="headingLineCount" value="1" />
+		<modifier key="headingFontSize" value="1.5" />
+		<modifier key="fontSize" value="3.5" />
+		<modifier key="headingBackgroundColor" value="0x00ffffff" />
+		<modifier key="headingPanelCounter" value="text" />
+		<modifier key="headingPanelCounterPos" value="inHeading" />
+	</guiprefs>
+
+	<!-- The locale section. Asks here to include the English langpack. -->
+	<locale>
+		<langpack iso3="eng" />
+	</locale>
+
+	<resources>
+		<!-- <res id="Installer.image" src="./res/logo-soa4all.png" /> -->
+		<res id="LicencePanel.licence" src="./res/LicenceAgreement.txt" />
+		<res id="userInputSpec.xml" src="./res/userInputSpec.xml" />
+		<res id="Heading.image" src="./res/logo.png" />
+		<res id="HTMLInfoPanel.info" src="./res/hello.html" />
+		<!-- <res id="installer.langsel.img" src="./res/petals.png" /> -->
+		<!-- <res id="ProcessPanel.Spec.xml" src="./res/process-panel.xml" /> -->
+		<res id="packsLang.xml_eng" src="./res/packsLang_eng.xml" />
+		<res id="AntActionsSpec.xml" src="./res/AntActionsSpec.xml" />
+		<res id="antBuild.xml" src="./res/soa4all-ant.xml" type="ant" />
+		<res id="XHtmlInfoPanel.info" src="./res/summary.html"/>
+	</resources>
+
+	<listeners>
+		<listener installer="AntActionInstallerListener" uninstaller="AntActionUninstallerListener" />
+	</listeners>
+
+	<native type="izpack" name="ShellLink.dll" />
+	<native type="3rdparty" name="COIOSHelper.dll" stage="both">
+		<os family="windows" />
+	</native>
+
+	<!-- condition for showing base configuration if package is selected -->
+	<!-- <conditions> </conditions> -->
+	<!-- <variables> -->
+	<!-- <variable name="UserPathPanelVariable" value="${INSTALL_PATH}_BASE" 
+		/> -->
+	<!-- </variables> -->
+
+	<!-- Dynamic variables are processed on each panel load -->
+	<!-- <dynamicvariables> -->
+	<!-- </dynamicvariables> -->
+
+	<!-- Defines all the panels which are needed for the installer -->
+	<panels>
+		<!-- Simple panels for information -->
+		<panel classname="HTMLInfoPanel" />
+		<panel classname="LicencePanel" />
+
+		<!-- Select installation path -->
+		<panel classname="TargetPanel" />
+
+		<!-- Display the packs choice -->
+		<panel classname="PacksPanel" />
+
+		<!-- Selects the installation path -->
+		<!-- <panel classname="UserPathPanel" /> -->
+
+		<!-- Lets get user inputs, @see userInputSpec.xml resource for details -->
+		<panel classname="UserInputPanel" id="tomcat" />
+		<panel classname="UserInputPanel" id="sesame" />
+		<panel classname="UserInputPanel" id="database" />
+		<panel classname="UserInputPanel" id="dashboard" />
+		<panel classname="UserInputPanel" id="spices" />
+		<panel classname="UserInputPanel" id="luf" />
+		<panel classname="UserInputPanel" id="dtc" />
+		<panel classname="UserInputPanel" id="slo" />
+		<panel classname="UserInputPanel" id="optimizer" />
+		<panel classname="UserInputPanel" id="processeditor" />
+		<panel classname="UserInputPanel" id="iserve" />
+		<panel classname="UserInputPanel" id="sweet" />
+    	 <panel classname="UserInputPanel" id="groundingservice" />
+		 <panel classname="UserInputPanel" id="groundingeditor" />
+		 <panel classname="UserInputPanel" id="storage" />
+		 <panel classname="UserInputPanel" id="wsmolite" />
+		<panel classname="SummaryPanel"/>
+		<panel classname="InstallPanel" />
+		<panel classname="eu.soa4all.installer.util.panels.XHtmlInfoPanel" id="summary"/>
+		<panel classname="FinishPanel" />
+	</panels>
+
+	<!-- The packs section, each SOA4All module has its own pack. TODO : Need 
+		to add dependencies between packs since there are dependencies between SOA4All 
+		modules -->
+	<packs>
+		<pack name="Localconfig" id="localconfig" required="yes"
+			preselected="yes">
+			<description>Default SOA4All configuration</description>
+			<fileset dir="./res/default" targetdir="$INSTALL_PATH" />
+			<fileset dir="./res/html" targetdir="$INSTALL_PATH" />
+			
+			<!-- TODO : Parse the HTML files with user inputs -->
+			<parsable targetfile="$INSTALL_PATH/soa4all.sh" />
+			<parsable targetfile="$INSTALL_PATH/info.html" />
+			
+			<!-- chmod -->
+			<executable targetfile="$INSTALL_PATH/soa4all.sh" stage="never" />
+			<executable targetfile="$INSTALL_PATH/shutdown.sh" stage="never" />
+			<executable targetfile="$INSTALL_PATH/uninstall.sh" stage="never" />
+		</pack>
+
+		<pack name="Tomcat" id="tomcat" required="yes" preselected="yes">
+			<description>Configure and Install Apache Tomcat on your system</description>
+			<fileset dir="SOA4ALL/apache-tomcat" targetdir="$INSTALL_PATH/apache-tomcat" />
+			<file src="./res/tomcat/server.xml" targetdir="$INSTALL_PATH/apache-tomcat/conf" />
+			<file src="./res/tomcat/tomcat-users.xml" targetdir="$INSTALL_PATH/apache-tomcat/conf" />
+
+			<parsable targetfile="$INSTALL_PATH/apache-tomcat/conf/server.xml" />
+			<parsable targetfile="$INSTALL_PATH/apache-tomcat/conf/tomcat-users.xml" />
+
+			<executable targetfile="$INSTALL_PATH/apache-tomcat/bin/catalina.sh"
+				stage="never" />
+			<executable targetfile="$INSTALL_PATH/apache-tomcat/bin/digest.sh"
+				stage="never" />
+			<executable targetfile="$INSTALL_PATH/apache-tomcat/bin/setclasspath.sh"
+				stage="never" />
+			<executable targetfile="$INSTALL_PATH/apache-tomcat/bin/shutdown.sh"
+				stage="never" />
+			<executable targetfile="$INSTALL_PATH/apache-tomcat/bin/startup.sh"
+				stage="never" />
+			<executable targetfile="$INSTALL_PATH/apache-tomcat/bin/tool-wrapper.sh"
+				stage="never" />
+			<executable targetfile="$INSTALL_PATH/apache-tomcat/bin/version.sh"
+				stage="never" />
+		</pack>
+
+		<pack name="Database" id="database" required="no" preselected="no">
+			<description>Database configuration</description>
+			<fileset dir="./res/database" targetdir="$INSTALL_PATH/database" />
+			<parsable targetfile="$INSTALL_PATH/database/connection.properties" />
+		</pack>
+		
+		<pack name="Sesame" id="sesame" required="no" preselected="no">
+			<description>Sesame configuration</description>
+			<fileset dir="SOA4ALL/wars/openrdf-sesame"
+				targetdir="$INSTALL_PATH/tmp/wars/openrdf-sesame" />
+		</pack>
+
+		<!-- DASHBOARD -->
+		<pack name="Dashboard" id="dashboard" required="no" preselected="no">
+			<description>Configure and install the SOA4All Studio Dashboard</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/soa4all-coredashboard-gwt-main"
+				targetdir="$INSTALL_PATH/tmp/wars/soa4all-coredashboard-gwt-main" />
+
+			<!-- <file src="./res/soa4all-coredashboard-gwt-main/WEB-INF/classes/soa4all-modules.cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/soa4all-coredashboard-gwt-main/WEB-INF/classes/" 
+				/> <parsable targetfile="$INSTALL_PATH/tmp/wars/soa4all-coredashboard-gwt-main/WEB-INF/classes/soa4all-modules.cfg.xml" 
+				/> -->
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+
+		<pack name="Spices" id="spices" required="no" preselected="no">
+			<description>Configure and install Spices (Consuption Platform)</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/soa4all-consumptionplatform-webapp"
+				targetdir="$INSTALL_PATH/tmp/wars/soa4all-consumptionplatform-webapp" />
+
+			<!-- <file src="./res/soa4all-coredashboard-gwt-main/WEB-INF/classes/soa4all-modules.cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/soa4all-coredashboard-gwt-main/WEB-INF/classes/" 
+				/> <parsable targetfile="$INSTALL_PATH/tmp/wars/soa4all-coredashboard-gwt-main/WEB-INF/classes/soa4all-modules.cfg.xml" 
+				/> -->
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+
+		<!-- LINKED USER FEEDBACK -->
+		<pack name="Linkeduserfeedback" id="linkeduserfeedback" required="no"
+			preselected="no">
+			<depends packname="Sesame"/>
+			<description>Configure and install the Linked User Feedback application</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/linkeduserfeedback" targetdir="$INSTALL_PATH/tmp/wars/linkeduserfeedback" />
+			<!-- Copying files needed for configuration into the temporary directory -->
+			<file src="./res/linkeduserfeedback/WEB-INF/config.properties"
+				targetdir="$INSTALL_PATH/tmp/wars/linkeduserfeedback/WEB-INF/" />
+
+			<!-- Parsing files with good variables values -->
+			<parsable
+				targetfile="$INSTALL_PATH/tmp/wars/linkeduserfeedback/WEB-INF/config.properties" />
+
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+
+		<pack name="DesignTimeComposer" id="designtimecomposer" required="no"
+			preselected="no">
+			<description>Configure and install the Design Time Composer</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/soa4all-service-construction-design-time-composer" targetdir="$INSTALL_PATH/tmp/wars/soa4all-service-construction-design-time-composer" />
+			<!-- Copying files needed for configuration into the temporary directory -->
+			<file src="./res/designtimecomposer/WEB-INF/classes/dtcomposer-service-configuration.xml"
+				targetdir="$INSTALL_PATH/tmp/wars/soa4all-service-construction-design-time-composer/WEB-INF/classes/" />
+
+			<!-- Parsing files with good variables values -->
+			<parsable
+				targetfile="$INSTALL_PATH/tmp/wars/soa4all-service-construction-design-time-composer/WEB-INF/classes/dtcomposer-service-configuration.xml" />
+
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+		
+		<pack name="SemanticLinkOperator" id="semanticlinkoperator" required="no"
+			preselected="no">
+			<description>Configure and install the Semantic Link Operator</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/semantic-link-operator" targetdir="$INSTALL_PATH/tmp/wars/semantic-link-operator" />
+
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+		
+		<pack name="Optimizer" id="optimizer" required="no"
+			preselected="no">
+			<description>Configure and install the Service Construction Optimizer</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/soa4all-service-construction-optimizer" targetdir="$INSTALL_PATH/tmp/wars/soa4all-service-construction-optimizer" />
+
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+		
+		<pack name="ProcessEditor" id="processeditor" required="no"
+			preselected="no">
+			<description>Configure and install the Process Editor</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/soa4all-dashboard-gwt-module-composer" targetdir="$INSTALL_PATH/tmp/wars/soa4all-dashboard-gwt-module-composer" />
+
+			<file src="./res/processeditor/soa4all-composer-config.xml"
+				targetdir="$INSTALL_PATH/tmp/home/" />
+
+			<parsable
+				targetfile="$INSTALL_PATH/tmp/home/soa4all-composer-config.xml" />
+			
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+		
+		<pack name="iServe" id="iserve" required="no"
+			preselected="no">
+			<depends packname="Sesame"/>
+			<description>Configure and install iServe</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/soa4all-iserve" targetdir="$INSTALL_PATH/tmp/wars/soa4all-iserve" />
+			<!-- TODO : Parse configuration file -->
+
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+		
+		<pack name="GroundingEditor" id="groundingeditor" required="no"
+			preselected="no">
+<!-- 			<depends packname="Sesame"/> -->
+			<description>Configure and install the Grounding Editor</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/studio-grounding-editor" targetdir="$INSTALL_PATH/tmp/wars/studio-grounding-editor" />
+			<!-- TODO : Parse configuration file -->
+
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+		
+		<pack name="GroundingService" id="groundingservice" required="no"
+			preselected="no">
+<!-- 			<depends packname="Sesame"/> -->
+			<description>Configure and install the Grounding Service</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/studio-grounding-service/groundingService" targetdir="$INSTALL_PATH/tmp/wars/studio-grounding-service" />
+			<!-- TODO : Parse configuration file -->
+
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+		
+		<pack name="Storage" id="storage" required="no"
+			preselected="no">
+<!-- 			<depends packname="Sesame"/> -->
+			<description>Configure and install the Studio Storage</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/studio-storage/storage/" targetdir="$INSTALL_PATH/tmp/wars/studio-storage" />
+			<!-- TODO : Parse storage.properties file -->
+			
+			<file src="./res/storage/WEB-INF/classes/storage.properties"
+				targetdir="$INSTALL_PATH/tmp/wars/studio-storage/WEB-INF/classes/" />
+
+			<!-- Parsing files with good variables values -->
+			<parsable
+				targetfile="$INSTALL_PATH/tmp/wars/studio-storage/WEB-INF/classes/storage.properties" />
+
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+		
+		<pack name="WSMOLite" id="wsmolite" required="no"
+			preselected="no">
+<!-- 			<depends packname="Sesame"/> -->
+			<description>Configure and install the WSMO Lite</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/studio-wsmolite-editor" targetdir="$INSTALL_PATH/tmp/wars/studio-wsmolite-editor" />
+
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+		
+		<pack name="Sweet" id="sweet" required="no"
+			preselected="no">
+<!-- 			<depends packname="Sesame"/> -->
+			<description>Configure and install Sweet</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/studio-sweet" targetdir="$INSTALL_PATH/tmp/wars/studio-sweet" />
+
+			<file src="./res/sweet/WEB-INF/config.properties"
+				targetdir="$INSTALL_PATH/tmp/wars/studio-sweet/WEB-INF/" />
+
+			<!-- Parsing files with good variables values -->
+			<parsable
+				targetfile="$INSTALL_PATH/tmp/wars/studio-sweet/WEB-INF/config.properties" />
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+		
+		<pack name="Cleaner" id="cleaner" required="yes" preselected="yes">
+			<description>Post install clean task</description>
+		</pack>
+	</packs>
+
+	<!-- Ant is needed to repackage the WARs, download things, etc... -->
+	<jar src="./res/lib/ant.jar" stage="both" />
+	<jar src="./res/lib/ant-launcher.jar" stage="both" />
+	<jar src="./res/lib/soa4all-installer-util.jar" stage="both" />
+</installation>
+

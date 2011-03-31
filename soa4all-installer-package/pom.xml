@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>installer-builder</artifactId>
+		<groupId>eu.soa4all</groupId>
+		<version>SNAPSHOT</version>
+	</parent>
+	<groupId>eu.soa4all.installer</groupId>
+	<artifactId>soa4all-installer-package</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>soa4all-installer-package</name>
+	<url>http://soa4all.eu</url>
+	<properties>
+		<staging.dir>${project.build.directory}/installResources</staging.dir>
+		<staging.wars.dir>${statging.dir}/soa4all/wars/</staging.wars.dir>
+		<staging.libs.dir>${statging.dir}/res/libs/</staging.libs.dir>
+		<app.name>SOA4All Installer</app.name>
+
+		<tomcat.version>6.0.30</tomcat.version>
+		<tomcat.artifact>apache-tomcat</tomcat.artifact>
+		<tomcat.group>org.petalslink.tomcat</tomcat.group>
+
+		<izpack.version>4.3.3</izpack.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.izpack</groupId>
+			<artifactId>izpack-standalone-compiler</artifactId>
+			<version>4.3.3</version>
+			<optional>true</optional>
+		</dependency>
+		
+		<dependency>
+			<groupId>eu.soa4all.installer</groupId>
+			<artifactId>soa4all-installer-util</artifactId> 
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<!-- Add the dependencies here has provided if there are not already compiled 
+			and available on a repository -->
+
+		<!-- TOMCAT dependency -->
+		<dependency>
+			<groupId>${tomcat.group}</groupId>
+			<artifactId>${tomcat.artifact}</artifactId>
+			<version>${tomcat.version}</version>
+			<type>zip</type>
+			<!--><scope>runtime</scope> -->
+		</dependency>
+		
+		<dependency>
+			<groupId>org.openrdf.sesame</groupId>
+			<artifactId>sesame-http-server</artifactId>
+			<version>2.3.2</version>
+			<type>war</type>
+		</dependency>
+
+		<!-- SOA4All modules to install -->
+
+		<dependency>
+			<groupId>org.soa4all.coredashboard.gwt.main</groupId>
+			<artifactId>soa4all-coredashboard-gwt-main</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>eu.soa4all.studio</groupId>
+			<artifactId>linkeduserfeedback</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- SPICES -->
+		<dependency>
+			<groupId>eu.soa4all.studiodecoupled.spices</groupId>
+			<artifactId>soa4all-consumptionplatform-webapp</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>eu.soa4all.construction</groupId>
+			<artifactId>soa4all-service-construction-design-time-composer</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>eu.soa4all.construction.soa4all-service-construction-design-time-composer</groupId>
+			<artifactId>semantic-link-operator</artifactId>
+			<version>1.0-DTC-SLO</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>eu.soa4all.construction</groupId>
+			<artifactId>soa4all-service-construction-optimizer</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Process editor -->
+		<dependency>
+			<groupId>eu.soa4all.studiodecoupled.composer</groupId>
+			<artifactId>soa4all-dashboard-gwt-module-composer</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- GroundingEditor (GUI, war) -->
+		<dependency>
+			<groupId>eu.soa4all.studio.grounding-editor</groupId>
+			<artifactId>studio-grounding-editor</artifactId>
+			<version>M36-Release</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Grounding Editor Service -->
+		<dependency>
+			<artifactId>studio-grounding-service</artifactId>
+			<groupId>eu.soa4all.studio.grounding-editor</groupId>
+			<version>M36Release</version>
+			<type>zip</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Storage -->
+		<dependency>
+			<artifactId>studio-storage</artifactId>
+			<groupId>eu.soa4all.studio.storage</groupId>
+			<version>M36-Release</version>
+			<type>zip</type>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- WSMO LIte : SOWER -->
+		<dependency>
+			<artifactId>studio-wsmolite-editor</artifactId>
+			<groupId>eu.soa4all.studio.wsmolite-editor</groupId>
+			<version>M36-Release</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- iServe -->
+		<dependency>
+			<artifactId>soa4all-iserve</artifactId>
+			<groupId>eu.soa4all.iserve</groupId>
+			<version>0.9</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Sweet -->
+		<dependency>
+			<artifactId>studio-sweet</artifactId>
+			<groupId>eu.soa4all.studio.sweet</groupId>
+			<version>M36-Release</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- <dependency> <groupId>eu.soa4all.wp6</groupId> <artifactId>DesignTimeComposer</artifactId> 
+			<version>1.0-SNAPSHOT</version> <type>aar</type> <scope>provided</scope> 
+			</dependency> -->
+
+	</dependencies>
+
+	<build>
+		<defaultGoal>package</defaultGoal>
+		<finalName>SOA4AllInstaller</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<!-- Put the dependendencies to unpack here if needed -->
+					<!-- <execution> <id>unpack</id> <phase>package</phase> <goals> <goal>unpack</goal> 
+						</goals> <configuration> <artifactItems> <artifactItem> <groupId>${petals.group}</groupId> 
+						<artifactId>${petals.artifact}</artifactId> <version>${petals.version}</version> 
+						<type>zip</type> <overWrite>true</overWrite> <outputDirectory>${staging.dir}/soa4all</outputDirectory> 
+						<destFileName>*</destFileName> </artifactItem> </artifactItems> </configuration> 
+						</execution> -->
+					<!-- Put the dependencies to embed, for example webapps. All of that 
+						will go into a temp directory to prepare the packaging -->
+					<execution>
+						<id>unpack</id>
+						<phase>package</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<!-- All the dependencies to unpack and configure goes there (WARs, 
+								ZIP, JARs, ...) -->
+							<artifactItems>
+								<artifactItem>
+									<groupId>${tomcat.group}</groupId>
+									<artifactId>${tomcat.artifact}</artifactId>
+									<version>${tomcat.version}</version>
+									<type>zip</type>
+									<!-- <classifier>full</classifier> -->
+									<overWrite>true</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/apache-tomcat</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.openrdf.sesame</groupId>
+									<artifactId>sesame-http-server</artifactId>
+									<version>2.3.2</version>
+									<type>war</type>
+									<!-- <classifier>full</classifier> -->
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/openrdf-sesame</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>eu.soa4all.studio</groupId>
+									<artifactId>linkeduserfeedback</artifactId>
+									<version>0.0.1-SNAPSHOT</version>
+									<type>war</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/linkeduserfeedback</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<!-- <artifactItem> <groupId>eu.soa4all.wp6</groupId> <artifactId>DesignTimeComposer</artifactId> 
+									<version>1.0-SNAPSHOT</version> <type>aar</type> <overWrite>false</overWrite> 
+									<outputDirectory>${staging.dir}/soa4all/wars/designtimecomposer</outputDirectory> 
+									<destFileName>*</destFileName> </artifactItem> -->
+								<artifactItem>
+									<groupId>org.soa4all.coredashboard.gwt.main</groupId>
+									<artifactId>soa4all-coredashboard-gwt-main</artifactId>
+									<version>0.0.1-SNAPSHOT</version>
+									<type>war</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/soa4all-coredashboard-gwt-main</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>eu.soa4all.studiodecoupled.spices</groupId>
+									<artifactId>soa4all-consumptionplatform-webapp</artifactId>
+									<version>0.0.1-SNAPSHOT</version>
+									<type>war</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/soa4all-consumptionplatform-webapp</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>eu.soa4all.construction</groupId>
+									<artifactId>soa4all-service-construction-design-time-composer</artifactId>
+									<version>1.0-SNAPSHOT</version>
+									<type>war</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/soa4all-service-construction-design-time-composer</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>eu.soa4all.construction.soa4all-service-construction-design-time-composer</groupId>
+									<artifactId>semantic-link-operator</artifactId>
+									<version>1.0-DTC-SLO</version>
+									<type>war</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/semantic-link-operator</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>eu.soa4all.construction</groupId>
+									<artifactId>soa4all-service-construction-optimizer</artifactId>
+									<version>0.0.1-SNAPSHOT</version>
+									<type>war</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/soa4all-service-construction-optimizer</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>eu.soa4all.studiodecoupled.composer</groupId>
+									<artifactId>soa4all-dashboard-gwt-module-composer</artifactId>
+									<version>0.0.1-SNAPSHOT</version>
+									<type>war</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/soa4all-dashboard-gwt-module-composer</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>eu.soa4all.studio.grounding-editor</groupId>
+									<artifactId>studio-grounding-editor</artifactId>
+									<version>M36-Release</version>
+									<type>war</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/studio-grounding-editor</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>eu.soa4all.studio.grounding-editor</groupId>
+									<artifactId>studio-grounding-service</artifactId>
+									<version>M36Release</version>
+									<type>zip</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/studio-grounding-service</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<artifactId>studio-storage</artifactId>
+									<groupId>eu.soa4all.studio.storage</groupId>
+									<version>M36-Release</version>
+									<type>zip</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/studio-storage</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+								<artifactId>studio-wsmolite-editor</artifactId>
+									<groupId>eu.soa4all.studio.wsmolite-editor</groupId>
+									<version>M36-Release</version>
+									<type>war</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/studio-wsmolite-editor</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<artifactId>soa4all-iserve</artifactId>
+									<groupId>eu.soa4all.iserve</groupId>
+									<version>0.9</version>
+									<type>war</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/soa4all-iserve</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<artifactId>studio-sweet</artifactId>
+									<groupId>eu.soa4all.studio.sweet</groupId>
+									<version>M36-Release</version>
+									<type>war</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/studio-sweet</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+							</artifactItems>
+							<!-- <outputDirectory>${project.build.directory}/wars</outputDirectory> 
+								<overWriteReleases>false</overWriteReleases> <overWriteSnapshots>true</overWriteSnapshots> -->
+						</configuration>
+					</execution>
+					<!-- copy the required utility libraries into the staging dir -->
+					<execution>
+						<id>copy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<!-- SOA4All dependencies without any configuration goes here -->
+								<artifactItem>
+									<groupId>eu.soa4all.installer</groupId>
+									<artifactId>soa4all-installer-util</artifactId> 
+									<version>1.0-SNAPSHOT</version>
+									<type>jar</type>
+									<overWrite>true</overWrite> 
+									<outputDirectory>${staging.dir}/res/lib/</outputDirectory>
+									<destFileName>soa4all-installer-util.jar</destFileName> 
+								</artifactItem>
+								<!-- Mandatory dependencies, SOA4All independent -->
+								<artifactItem>
+									<groupId>org.apache.ant</groupId>
+									<artifactId>ant</artifactId>
+									<version>1.7.1</version>
+									<!-- <classifier>jar-with-dependencies</classifier> -->
+									<type>jar</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>${staging.dir}/res/lib/</outputDirectory>
+									<destFileName>ant.jar</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.apache.ant</groupId>
+									<artifactId>ant-launcher</artifactId>
+									<version>1.7.1</version>
+									<!-- <classifier>jar-with-dependencies</classifier> -->
+									<type>jar</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>${staging.dir}/res/lib/</outputDirectory>
+									<destFileName>ant-launcher.jar</destFileName>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Create the staging dir -->
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>create-staging-area</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<copy todir="${staging.dir}">
+									<fileset dir="${basedir}/src/izpack" />
+								</copy>
+							</tasks>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>rename</id>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<mkdir dir="${staging.dir}/SOA4ALL" />
+								<mkdir dir="${staging.dir}/SOA4ALL/wars" />
+								<move todir="${staging.dir}/SOA4ALL/wars/">
+									<fileset dir="${staging.dir}/soa4all/wars/" />
+								</move>
+								<mkdir dir="{staging.dir}/SOA4ALL/apache-tomcat" />
+								<move todir="${staging.dir}/SOA4ALL/apache-tomcat/">
+									<fileset
+										dir="${staging.dir}/soa4all/apache-tomcat/${tomcat.artifact}-${tomcat.version}/" />
+								</move>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Let's create the installer with all the resources from the staging 
+				directory -->
+			<plugin>
+				<groupId>org.codehaus.izpack</groupId>
+				<artifactId>izpack-maven-plugin</artifactId>
+				<version>1.0-alpha-5</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.izpack</groupId>
+						<artifactId>izpack-standalone-compiler</artifactId>
+						<version>4.3.3</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<izpackBasedir>${staging.dir}</izpackBasedir>
+					<customPanelDirectory>${staging.dir}</customPanelDirectory>
+					<!-- 'Web' or 'Standard' -->
+					<kind>Standard</kind>
+				</configuration>
+				<executions>
+					<execution>
+						<id>standard-installer</id>
+						<phase>package</phase>
+						<goals>
+							<goal>izpack</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- IZPACK independant -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<addGroupIdToProjectName>true</addGroupIdToProjectName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>5</source>
+					<target>5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<!-- For TOMCAT -->
+		<repository>
+			<id>ebmws-public.others</id>
+			<name>PetalsLink Others Repository</name>
+			<url>http://maven.petalslink.com/others</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<!-- SOA4ALL SNAPSHOTS -->
+		<repository>
+			<id>soa4all.snapshots</id>
+			<name>SOA4All Snapshots Repository</name>
+			<url>http://coconut.tie.nl:8080/nexus-webapp-1.3.1/content/groups/public-snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>soa4all.release</id>
+			<name>SOA4All Release Repository</name>
+			<url>http://coconut.tie.nl:8080/nexus-webapp-1.3.1/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>aduna.release</id>
+			<name>Aduna Release Repository</name>
+			<url>http://repo.aduna-software.org/maven2/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+</project>

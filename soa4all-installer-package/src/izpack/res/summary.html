@@ -1,0 +1,28 @@
+<html>
+
+<head>
+<title>SOA4All Installer :: Summary</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>Congratulations!</h2>
+<p>You have successfully installed and set-up the <a href="http://soa4all.eu">SOA4All</a> Software Modules on your system.</p>
+
+<h2>What's next?</h2>
+<h3>Launching</h3>
+<p>Go to the '<i>${INSTALL_PATH}</i>' directory and launch the '<i>soa4all.(sh|bat)</i>' script, it will launch the application server with the services you selected.</p>
+
+<h3>Additional configuration</h3>
+<p>
+If you installed the Sesame module, you will need to create repositories you defined in dependent modules.<br>
+Please go to <a href="http://${installer.tomcat.hostname}:${installer.tomcat.http}/openrdf-sesame">http://${installer.tomcat.hostname}:${installer.tomcat.http}/openrdf-sesame</a> and create the following repositories :<br>
+LIST(installer.sesame.repo.)
+</p>
+
+<h3>Playing</h3>
+<p>
+Once started, have a look to <a href="http://${installer.tomcat.hostname}:${installer.tomcat.http}">http://${installer.tomcat.hostname}:${installer.tomcat.http}</a> which runs the software modules you selected.
+</p>
+</body>
+</html>

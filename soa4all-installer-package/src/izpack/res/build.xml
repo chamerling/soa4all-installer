@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     5 août 2010 11:54:49                                                        
+
+     project    
+     description
+                   
+     chamerling                                                                
+     ====================================================================== -->
+<project name="project" default="foo">
+	<description>
+            description
+    </description>
+
+	<target name="foo">
+		<condition property="conditionOK">
+			<equals arg1="eee" arg2="successful" />
+		</condition>
+	</target>
+
+	<target name="bar" depends="foo" if="conditionOK">
+		<echo message="OK"/>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="depends">
+	</target>
+
+</project>

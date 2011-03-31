@@ -1,0 +1,45 @@
+<!-- Here are some Ant tasks used to package folders as WARs, JARsn ZIPs, and to download binaries such as Apache Tomcat, ... -->
+
+<project name="soa4all-installer">
+
+	<target name="init" description="Create required files and folders">
+		<echo message="INIT called"/>
+		<mkdir dir="${install.path}/tmp" />
+		<mkdir dir="${install.path}/tmp/home" />
+		<mkdir dir="${install.path}/tmp/wars" />
+	</target>
+
+	<target name="package-war">
+		<echo message="Packaging the WAR..." />
+		<echo message="Create WAR from ${webapp.src.path} to ${war.file}" />
+		<zip basedir="${webapp.src.path}" destfile="${war.file}" />
+	</target>
+
+	<target name="clean">
+		<echo message="Cleaning tmp folder...${install.path}/tmp/" />
+		<delete dir="${install.path}/tmp/" />
+		<echo message="Cleaning wars folder...${install.path}/wars/" />
+		<delete dir="${install.path}/wars/" />
+	</target>
+
+	<target name="deploy-war">
+		<echo message="Deploying WAR ${war.file} to Tomcat..." />
+		<!-- Selection is done on the target itself -->
+		<!--<antcall target="deploy-local" />-->
+		<antcall target="deploy-new" />
+	</target>
+
+	<!-- Deploy into the tomcat provided by the installer -->
+	<!--<target name="deploy-new" depends="check-new-tomcat" if="tomcat.new">-->
+	<target name="deploy-new">
+		<echo message="Deploying WAR ${war.file} to Tomcat Instance" />
+		<move file="${war.file}" todir="${tomcat.path}/webapps" />
+	</target>
+	
+	<!-- Copy file to $HOME -->
+	<target name="copy-home">
+		<echo message="Copying file ${file.to.home} to user home directory ${user.home}"/>
+		<move file="${file.to.home}" todir="${user.home}"/>
+	</target>
+	
+</project>

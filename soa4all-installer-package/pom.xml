@@ -181,6 +181,7 @@
 		</dependency>
 		
 		<!-- Process Engine -->
+		<!-- 
 		<dependency>
 			<artifactId>processengine</artifactId>
 			<groupId>eu.soa4all.execution</groupId>
@@ -188,6 +189,7 @@
 			<type>war</type>
 			<scope>provided</scope>
 		</dependency>
+		-->
 		
 		<!-- <dependency> <groupId>eu.soa4all.wp6</groupId> <artifactId>DesignTimeComposer</artifactId> 
 			<version>1.0-SNAPSHOT</version> <type>aar</type> <scope>provided</scope> 
@@ -364,6 +366,7 @@
 									<outputDirectory>${staging.dir}/soa4all/wars/studio-sweet</outputDirectory>
 									<destFileName>*</destFileName>
 								</artifactItem>
+								<!-- 
 								<artifactItem>
 									<artifactId>processengine</artifactId>
 									<groupId>eu.soa4all.execution</groupId>
@@ -373,6 +376,7 @@
 									<outputDirectory>${staging.dir}/soa4all/wars/processengine</outputDirectory>
 									<destFileName>*</destFileName>
 								</artifactItem>
+								-->
 							</artifactItems>
 							<!-- <outputDirectory>${project.build.directory}/wars</outputDirectory> 
 								<overWriteReleases>false</overWriteReleases> <overWriteSnapshots>true</overWriteSnapshots> -->

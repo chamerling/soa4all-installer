@@ -102,6 +102,7 @@
 		 <panel classname="UserInputPanel" id="groundingeditor" />
 		 <panel classname="UserInputPanel" id="storage" />
 		 <panel classname="UserInputPanel" id="wsmolite" />
+		 <panel classname="UserInputPanel" id="processengine" />
 		<panel classname="SummaryPanel"/>
 		<panel classname="InstallPanel" />
 		<panel classname="eu.soa4all.installer.util.panels.XHtmlInfoPanel" id="summary"/>
@@ -345,6 +346,17 @@
 			<!-- Parsing files with good variables values -->
 			<parsable
 				targetfile="$INSTALL_PATH/tmp/wars/studio-sweet/WEB-INF/config.properties" />
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+		
+		<pack name="ProcessEngine" id="processengine" required="no"
+			preselected="no">
+<!-- 			<depends packname="Sesame"/> -->
+			<description>Configure and install the Process Engine</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/processengine" targetdir="$INSTALL_PATH/tmp/wars/processengine" />
+
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
 		</pack>

@@ -321,4 +321,15 @@
 		<field type="staticText" align="left"
 			txt="Note : The Sweet Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/studio-sweet/, click 'Next' for next installation step..." />
 	</panel>
+	
+	<panel id="processengine">
+		<createForPack name="ProcessEngine" />
+		<field type="title" txt="Process Engine Configuration" />
+		<field type="staticText" align="left"
+			txt="No parameters to define" />
+		<field type="space" />
+		<field type="space" />
+		<field type="staticText" align="left"
+			txt="Note : The Process Engine will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/processengine/, click 'Next' for next installation step..." />
+	</panel>
 </userInput>

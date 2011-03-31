@@ -180,6 +180,15 @@
 			<scope>provided</scope>
 		</dependency>
 		
+		<!-- Process Engine -->
+		<dependency>
+			<artifactId>processengine</artifactId>
+			<groupId>eu.soa4all.execution</groupId>
+			<version>3.0</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		
 		<!-- <dependency> <groupId>eu.soa4all.wp6</groupId> <artifactId>DesignTimeComposer</artifactId> 
 			<version>1.0-SNAPSHOT</version> <type>aar</type> <scope>provided</scope> 
 			</dependency> -->
@@ -355,6 +364,15 @@
 									<outputDirectory>${staging.dir}/soa4all/wars/studio-sweet</outputDirectory>
 									<destFileName>*</destFileName>
 								</artifactItem>
+								<artifactItem>
+									<artifactId>processengine</artifactId>
+									<groupId>eu.soa4all.execution</groupId>
+									<version>3.0</version>
+									<type>war</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/processengine</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
 							</artifactItems>
 							<!-- <outputDirectory>${project.build.directory}/wars</outputDirectory> 
 								<overWriteReleases>false</overWriteReleases> <overWriteSnapshots>true</overWriteSnapshots> -->
@@ -528,6 +546,18 @@
 			<id>soa4all.release</id>
 			<name>SOA4All Release Repository</name>
 			<url>http://coconut.tie.nl:8080/nexus-webapp-1.3.1/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<!-- For process engine -->
+		<repository>
+			<id>soa4all.processengine</id>
+			<name>SOA4All PE Repository</name>
+			<url>http://coconut.tie.nl:8080/nexus-webapp-1.3.1/content/repositories/soa4allexecutionengine/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>

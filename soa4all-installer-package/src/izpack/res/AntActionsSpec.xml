@@ -188,6 +188,19 @@
 		</antcall>
 	</pack>
 	
+	<pack name="ProcessEngine">
+		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
+			<property name="install.path" value="$INSTALL_PATH" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/processengine/" />
+			<property name="war.file" value="$INSTALL_PATH/processengine.war" />
+			<property name="webapp.name" value="processengine" />
+			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
+			<target name="init" />
+			<target name="package-war" />
+			<target name="deploy-war" />
+		</antcall>
+	</pack>
+	
 	<!-- Do it before all other packs, so order is afterpack -->
 	<!-- 
 	<pack name="Tomcat">

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<module>
+           <modulename>iServe</modulename>
+           <moduleURL>http://$installer.tomcat.hostname:$installer.tomcat.http/iserve/</moduleURL>
+           <moduleVersion>1.0</moduleVersion>
+           <moduleAdminEmail>iserve@soa4all.eu</moduleAdminEmail>
+</module>

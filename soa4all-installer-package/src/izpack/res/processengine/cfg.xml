@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<module>
+           <modulename>Process Engine</modulename>
+           <moduleURL>http://$installer.tomcat.hostname:$installer.tomcat.http/processengine/</moduleURL>
+           <moduleVersion>1.0</moduleVersion>
+           <moduleAdminEmail>processengine@soa4all.eu</moduleAdminEmail>
+</module>

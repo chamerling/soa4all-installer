@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<module>
+           <modulename>Deployer</modulename>
+           <moduleURL>http://$installer.tomcat.hostname:$installer.tomcat.http/deployer/</moduleURL>
+           <moduleVersion>1.0</moduleVersion>
+           <moduleAdminEmail>deployer@soa4all.eu</moduleAdminEmail>
+</module>

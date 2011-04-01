@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<module>
+           <modulename>Design Time Composer</modulename>
+           <moduleURL>http://$installer.tomcat.hostname:$installer.tomcat.http/designtimecomposer/</moduleURL>
+           <moduleVersion>1.0</moduleVersion>
+           <moduleAdminEmail>dtc@soa4all.eu</moduleAdminEmail>
+</module>

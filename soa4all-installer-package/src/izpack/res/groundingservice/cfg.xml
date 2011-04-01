@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<module>
+           <modulename>Grounding Service</modulename>
+           <moduleURL>http://$installer.tomcat.hostname:$installer.tomcat.http/groundingservice/</moduleURL>
+           <moduleVersion>1.0</moduleVersion>
+           <moduleAdminEmail>groundingservice@soa4all.eu</moduleAdminEmail>
+</module>

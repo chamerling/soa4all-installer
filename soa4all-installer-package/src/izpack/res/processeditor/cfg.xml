@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<module>
+           <modulename>Process Editor</modulename>
+           <moduleURL>http://$installer.tomcat.hostname:$installer.tomcat.http/processeditor/</moduleURL>
+           <moduleVersion>1.0</moduleVersion>
+           <moduleAdminEmail>processeditor@soa4all.eu</moduleAdminEmail>
+</module>

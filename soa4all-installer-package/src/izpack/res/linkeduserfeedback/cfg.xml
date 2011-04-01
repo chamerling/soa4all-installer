@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<module>
+           <modulename>Linked User Feedback</modulename>
+           <moduleURL>http://$installer.tomcat.hostname:$installer.tomcat.http/linkeduserfeedback/</moduleURL>
+           <moduleVersion>1.0</moduleVersion>
+           <moduleAdminEmail>luf@soa4all.eu</moduleAdminEmail>
+</module>

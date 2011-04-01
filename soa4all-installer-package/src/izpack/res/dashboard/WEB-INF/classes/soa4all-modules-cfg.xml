@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<modules>
+	
+    <module>
+        <moduleCategory>Editor</moduleCategory>
+        <moduleName>Composer</moduleName>
+        <moduleConfig>http://$installer.tomcat.hostname:$installer.tomcat.http/designtimecomposer/cfg.xml</moduleConfig>
+        <moduleIcon>http://$installer.tomcat.hostname:$installer.tomcat.http/designtimecomposer/images/icon.png</moduleIcon>
+        <displayPriority>200</displayPriority>
+        <topLevelModuleCategory>0</topLevelModuleCategory>
+        <moduleAdminEmail>georgi.pavlov (at) sap com</moduleAdminEmail>
+    </module>
+    
+    <module>
+        <moduleCategory>Editor</moduleCategory>
+        <moduleName>iServe</moduleName>
+        <moduleConfig>http://$installer.tomcat.hostname:$installer.tomcat.http/iserve/cfg.xml</moduleConfig>
+        <moduleIcon></moduleIcon>
+        <displayPriority>200</displayPriority>
+        <topLevelModuleCategory>0</topLevelModuleCategory>
+        <moduleAdminEmail>contact (at) soa4all eu</moduleAdminEmail>
+    </module>
+
+    <module>
+        <moduleCategory>Discovery</moduleCategory>
+        <moduleName>Discovery Module</moduleName>
+        <moduleConfig>http://$installer.tomcat.hostname:$installer.tomcat.http/discovery/cfg.xml</moduleConfig>
+        <moduleIcon>http://$installer.tomcat.hostname:$installer.tomcat.http/discovery/images/discovery/dashboard-overview-button-front.png</moduleIcon>
+        <displayPriority>200</displayPriority>
+        <topLevelModuleCategory>-1</topLevelModuleCategory>
+        <moduleAdminEmail>junghans (at) kit edu</moduleAdminEmail>
+    </module>
+     
+    <module>
+        <moduleCategory>MicroWSMOEditor</moduleCategory>
+        <moduleName>SWEET</moduleName>
+        <moduleConfig>http://$installer.tomcat.hostname:$installer.tomcat.http/sweet/cfg.xml</moduleConfig>
+        <moduleIcon>Icon</moduleIcon>
+        <displayPriority>400</displayPriority>
+        <topLevelModuleCategory>0</topLevelModuleCategory>
+        <moduleAdminEmail>shiva.puram@tieglobal.com</moduleAdminEmail>
+    </module>
+    <module>
+        <moduleCategory>WSDL Annotation</moduleCategory>
+        <moduleName>WSMO-Lite Editor</moduleName>
+        <moduleConfig>http://$installer.tomcat.hostname:$installer.tomcat.http/wsmolite/cfg.xml</moduleConfig>
+        <moduleIcon>http://$installer.tomcat.hostname:$installer.tomcat.http/wsmolite/images/WSMOLite/dashboard-overview-button-front.png</moduleIcon>
+        <displayPriority>200</displayPriority>
+        <topLevelModuleCategory>0</topLevelModuleCategory>
+        <moduleAdminEmail>alex.simov (at) ontotext com</moduleAdminEmail>
+    </module>
+    <module>
+        <moduleCategory>WSDL Annotation</moduleCategory>
+        <moduleName>Grounding Editor</moduleName>
+        <moduleConfig>http://$installer.tomcat.hostname:$installer.tomcat.http/groundingeditor/GroundingModule/cfg_ge.xml</moduleConfig>
+        <moduleIcon>http://$installer.tomcat.hostname:$installer.tomcat.http/groundingeditor/images/WSMOLite/dashboard-overview-button-front.png</moduleIcon>
+        <displayPriority>400</displayPriority>
+        <topLevelModuleCategory>-1</topLevelModuleCategory>
+        <moduleAdminEmail>alex.simov (at) ontotext com</moduleAdminEmail>
+    </module>
+
+<!-- 
+    <module>
+        <moduleCategory>WidgetExplorer</moduleCategory>
+        <moduleName>Widget Library</moduleName>
+        <moduleConfig>http://87.213.46.9:8080/DashboardConfig/widgetlibraryexplorer/cfg.xml</moduleConfig>
+        <moduleIcon>icon</moduleIcon>
+        <displayPriority>600</displayPriority>
+        <topLevelModuleCategory>-1</topLevelModuleCategory>
+        <moduleAdminEmail>shiva.puram@tieglobal.com</moduleAdminEmail>
+    </module>
+    -->
+    
+    <!-- 
+    <module>
+        <moduleCategory>Analysis</moduleCategory>
+        <moduleName>Monitoring Module</moduleName>
+        <moduleConfig>http://soa4all.inrialpes.fr/soa4all-monitoring/cfg.xml</moduleConfig>
+        <moduleIcon>http://soa4all.inrialpes.fr/soa4all-monitoring/MonitorModule/images/monitor/dashboard-overview-button-front.png</moduleIcon>
+        <displayPriority>600</displayPriority>
+        <topLevelModuleCategory>2</topLevelModuleCategory>
+        <moduleAdminEmail>tuvalu at inria dot fr</moduleAdminEmail>
+    </module>
+    -->
+    
+    <module>
+        <moduleCategory>Consumption Platform</moduleCategory>
+        <moduleName>SPICES</moduleName>
+        <moduleConfig>http://$installer.tomcat.hostname:$installer.tomcat.http/spices/cfg.xml</moduleConfig>
+        <moduleIcon>Icon</moduleIcon>
+        <displayPriority>600</displayPriority>
+        <topLevelModuleCategory>1</topLevelModuleCategory>
+        <moduleAdminEmail>imartinez@isoco.com</moduleAdminEmail>
+    </module>
+    
+    <!-- 
+    <module>
+        <moduleCategory>Profile</moduleCategory>
+        <moduleName>Profile</moduleName>
+        <moduleConfig>http://coconut.tie.nl:8080/profile/ProfileModule/cfg.xml</moduleConfig>
+        <moduleIcon>Icon</moduleIcon>
+        <displayPriority>600</displayPriority>
+        <topLevelModuleCategory>1</topLevelModuleCategory>
+    </module>
+    -->
+    
+<!--    <module>-->
+<!--        <moduleCategory>eCommerce Dashboard</moduleCategory>-->
+<!--        <moduleName>eCommerce Dashboard</moduleName>-->
+<!--        <moduleConfig>http://87.213.46.9:8080/DashboardConfig/ecommerceDashboard/cfg.xml</moduleConfig>-->
+<!--        <moduleIcon>icon</moduleIcon>-->
+<!--        <displayPriority>600</displayPriority>-->
+<!--        <topLevelModuleCategory>-1</topLevelModuleCategory>-->
+<!--        <moduleAdminEmail>shiva.puram@tieglobal.com</moduleAdminEmail>-->
+<!--    </module>-->
+    
+    <!-- 
+    <module>
+        <moduleCategory>Analysis</moduleCategory>
+        <moduleName>DSB Management module</moduleName>
+        <moduleConfig>http://ns306320.ovh.net:8181/soa4all-dsbmanagement/cfg.xml</moduleConfig>
+        <moduleIcon>icon</moduleIcon>
+        <displayPriority>600</displayPriority>
+        <topLevelModuleCategory>-1</topLevelModuleCategory>
+        <moduleAdminEmail>christophe dot hamerling at petalslink dot com</moduleAdminEmail>
+    </module>
+    
+    <module>
+        <moduleCategory>Editor</moduleCategory>
+        <moduleName>Human Tasks</moduleName>
+        <moduleConfig>https://195.93.234.46:8443/htsclient/HumanTasksModule/cfg.xml</moduleConfig>
+        <moduleIcon>icon</moduleIcon>
+        <displayPriority>600</displayPriority>
+        <topLevelModuleCategory>-1</topLevelModuleCategory>
+        <moduleAdminEmail>georgi.pavlov (at) sap dot com</moduleAdminEmail>
+    </module>    
+    
+    <module>
+        <moduleCategory>Analysis</moduleCategory>
+        <moduleName>DSB Monitoring module</moduleName>
+        <moduleConfig>http://ns306320.ovh.net:8282/soa4all-dsbmonitoring/cfg.xml</moduleConfig>
+        <moduleIcon>icon</moduleIcon>
+        <displayPriority>600</displayPriority>
+        <topLevelModuleCategory>-1</topLevelModuleCategory>
+        <moduleAdminEmail>christophe dot hamerling at petalslink dot com</moduleAdminEmail>
+    </module>
+    
+    
+    <module>
+        <moduleCategory>Media</moduleCategory>
+        <moduleName>SugarTube</moduleName>
+        <moduleConfig>http://sugartube.open.ac.uk/sugartube/cfg-SugarTube.xml</moduleConfig>
+        <moduleIcon>icon</moduleIcon>
+        <displayPriority>600</displayPriority>
+        <topLevelModuleCategory>-1</topLevelModuleCategory>
+        <moduleAdminEmail>H.Q.Yu@open.ac.uk</moduleAdminEmail>
+    </module>
+    
+    
+    <module>
+        <moduleCategory>Media</moduleCategory>
+        <moduleName>Annomation</moduleName>
+        <moduleConfig>http://annomation.open.ac.uk/annomation/cfg-annomation.xml</moduleConfig>
+        <moduleIcon>icon</moduleIcon>
+        <displayPriority>600</displayPriority>
+        <topLevelModuleCategory>-1</topLevelModuleCategory>
+        <moduleAdminEmail>d.j.lambert AT open.ac.uk</moduleAdminEmail>
+    </module>   
+    -->     
+
+</modules>

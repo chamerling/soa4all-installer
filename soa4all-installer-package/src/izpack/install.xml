@@ -88,7 +88,6 @@
 		<!-- Lets get user inputs, @see userInputSpec.xml resource for details -->
 		<panel classname="UserInputPanel" id="tomcat" />
 		<panel classname="UserInputPanel" id="sesame" />
-		<panel classname="UserInputPanel" id="database" />
 		<panel classname="UserInputPanel" id="dashboard" />
 		<panel classname="UserInputPanel" id="spices" />
 		<panel classname="UserInputPanel" id="luf" />
@@ -98,11 +97,13 @@
 		<panel classname="UserInputPanel" id="processeditor" />
 		<panel classname="UserInputPanel" id="iserve" />
 		<panel classname="UserInputPanel" id="sweet" />
-    	 <panel classname="UserInputPanel" id="groundingservice" />
-		 <panel classname="UserInputPanel" id="groundingeditor" />
-		 <panel classname="UserInputPanel" id="storage" />
-		 <panel classname="UserInputPanel" id="wsmolite" />
-		 <panel classname="UserInputPanel" id="processengine" />
+    	<panel classname="UserInputPanel" id="groundingservice" />
+		<panel classname="UserInputPanel" id="groundingeditor" />
+		<panel classname="UserInputPanel" id="storage" />
+		<panel classname="UserInputPanel" id="wsmolite" />
+		<panel classname="UserInputPanel" id="processengine" />
+		<panel classname="UserInputPanel" id="deployer" />
+		 
 		<panel classname="SummaryPanel"/>
 		<panel classname="InstallPanel" />
 		<panel classname="eu.soa4all.installer.util.panels.XHtmlInfoPanel" id="summary"/>
@@ -154,12 +155,6 @@
 				stage="never" />
 		</pack>
 
-		<pack name="Database" id="database" required="no" preselected="no">
-			<description>Database configuration</description>
-			<fileset dir="./res/database" targetdir="$INSTALL_PATH/database" />
-			<parsable targetfile="$INSTALL_PATH/database/connection.properties" />
-		</pack>
-		
 		<pack name="Sesame" id="sesame" required="no" preselected="no">
 			<description>Sesame configuration</description>
 			<fileset dir="SOA4ALL/wars/openrdf-sesame"
@@ -356,6 +351,17 @@
 			<description>Configure and install the Process Engine</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
 			<fileset dir="SOA4ALL/wars/processengine" targetdir="$INSTALL_PATH/tmp/wars/processengine" />
+
+			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
+				soa4all-ant.xml -->
+		</pack>
+		
+		<pack name="Deployer" id="deployer" required="no"
+			preselected="no">
+<!-- 			<depends packname="Sesame"/> -->
+			<description>Configure and install the Deployer</description>
+			<!-- Copying all the files from the WAR to a temporary directory -->
+			<fileset dir="SOA4ALL/wars/deployer" targetdir="$INSTALL_PATH/tmp/wars/deployer" />
 
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->

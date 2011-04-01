@@ -201,6 +201,19 @@
 		</antcall>
 	</pack>
 	
+	<pack name="Deployer">
+		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
+			<property name="install.path" value="$INSTALL_PATH" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/deployer/" />
+			<property name="war.file" value="$INSTALL_PATH/deployer.war" />
+			<property name="webapp.name" value="deployer" />
+			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
+			<target name="init" />
+			<target name="package-war" />
+			<target name="deploy-war" />
+		</antcall>
+	</pack>
+	
 	<!-- Do it before all other packs, so order is afterpack -->
 	<!-- 
 	<pack name="Tomcat">

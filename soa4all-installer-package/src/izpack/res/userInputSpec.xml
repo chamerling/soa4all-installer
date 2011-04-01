@@ -36,31 +36,6 @@
 			txt="Note : Apache Tomcat server will be installed under the '$INSTALL_PATH/apache-tomcat' directory, click 'Next' for next installation step..." />
 	</panel>
 	
-	<panel id="database">
-		<createForPack name="Database" />
-		<field type="title" txt="Database Configuration" />
-		<field type="staticText" align="left"
-			txt="The SOA4All platform is not delivered with a database but provides a simple way too configure a connection to an existing one. Fill the required fields to define database properties" />
-		<field type="space" />
-		<field type="staticText" align="left" txt="Driver" />
-		<field type="text" variable="installer.database.driver">
-			<description align="left" />
-			<spec txt="Driver : " size="30" set="org.hsqldb.jdbcDriver" />
-		</field>
-		<field type="text" variable="installer.database.url">
-			<description align="left" />
-			<spec txt="URL : " size="30" set="jdbc:hsqldb:hsql://localhost" />
-		</field>
-		<field type="text" variable="installer.database.user">
-			<description align="left" />
-			<spec txt="User : " size="30" set="sa" />
-		</field>
-		<field type="text" variable="installer.database.password">
-			<description align="left" />
-			<spec txt="Password : " size="30" set="" />
-		</field>
-	</panel>
-	
 	<panel id="sesame">
 		<createForPack name="Sesame" />
 		<field type="title" txt="Sesame Configuration" />
@@ -191,12 +166,12 @@
 				set="http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-service-construction-design-time-composer/services/DTComposer?wsdl"/>
 		</field>
 		<field type="text" variable="installer.processeditor.optimizer">
-			<spec txt="Optimizer Service (WSDL): *FIXME : Axis2 service URL*" size="100" 
-				set="http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-service-construction-optimizer/services/services/KPI-Optimizer?wsdl"/>
+			<spec txt="Optimizer Service (WSDL):" size="100" 
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-service-construction-optimizer/services/Optimizer?wsdl"/>
 		</field>
 		<field type="text" variable="installer.processeditor.deployer">
-			<spec txt="Deployer Service (WSDL): *FIXME : Axis2 service URL?*" size="100" 
-				set="http://$installer.tomcat.hostname:$installer.tomcat.http/services/LPMDeployer?wsdl"/>
+			<spec txt="Deployer Service (WSDL):" size="100" 
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/deployer/services/LPMDeployer?wsdl"/>
 		</field>
 		<field type="space" />
 		<field type="space" />
@@ -215,7 +190,7 @@
 
 		<field type="text" variable="installer.iserve.servername">
 			<spec txt="Server Name : " size="100"
-				set="iserve" />
+				set="$installer.tomcat.hostname:$installer.tomcat.http/soa4all-iserve/" />
 		</field>
 		<field type="text" variable="installer.iserve.sesameserverurl">
 			<spec txt="Sesame Server URL : " size="100" 
@@ -297,7 +272,7 @@
 		
 		<field type="text" variable="installer.sweet.servername">
 			<spec txt="Server Name : " size="100"
-				set="$installer.tomcat.hostname/sweet" />
+				set="$installer.tomcat.hostname:$installer.tomcat.http/studio-sweet/" />
 		</field>
 		<field type="text" variable="installer.sweet.sesameserverurl">
 			<spec txt="Sesame Server URL : " size="100" 
@@ -333,5 +308,16 @@
 		<field type="space" />
 		<field type="staticText" align="left"
 			txt="Note : The Process Engine will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/processengine/, click 'Next' for next installation step..." />
+	</panel>
+	
+	<panel id="deployer">
+		<createForPack name="Deployer" />
+		<field type="title" txt="Deployer Configuration" />
+		<field type="staticText" align="left"
+			txt="No parameters to define" />
+		<field type="space" />
+		<field type="space" />
+		<field type="staticText" align="left"
+			txt="Note : The Deployer will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/deployer/, click 'Next' for next installation step..." />
 	</panel>
 </userInput>

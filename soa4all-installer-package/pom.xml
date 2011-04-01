@@ -190,6 +190,16 @@
 			<scope>provided</scope>
 		</dependency>
 		
+		<!-- Deployer -->
+		<dependency>
+			<artifactId>deployer</artifactId>
+			<groupId>eu.soa4all.execution</groupId>
+			<version>3.0</version>
+			<type>war</type>
+			<classifier>deployer</classifier>
+			<scope>provided</scope>
+		</dependency>
+		
 		<!-- <dependency> <groupId>eu.soa4all.wp6</groupId> <artifactId>DesignTimeComposer</artifactId> 
 			<version>1.0-SNAPSHOT</version> <type>aar</type> <scope>provided</scope> 
 			</dependency> -->
@@ -373,6 +383,16 @@
 									<type>war</type>
 									<overWrite>false</overWrite>
 									<outputDirectory>${staging.dir}/soa4all/wars/processengine</outputDirectory>
+									<destFileName>*</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<artifactId>deployer</artifactId>
+									<groupId>eu.soa4all.execution</groupId>
+									<version>3.0</version>
+									<type>war</type>
+									<classifier>deployer</classifier>
+									<overWrite>false</overWrite>
+									<outputDirectory>${staging.dir}/soa4all/wars/deployer</outputDirectory>
 									<destFileName>*</destFileName>
 								</artifactItem>
 							</artifactItems>
@@ -559,7 +579,7 @@
 		<repository>
 			<id>soa4all.processengine</id>
 			<name>SOA4All PE Repository</name>
-			<url>http://coconut.tie.nl:8080/nexus-webapp-1.3.1/content/repositories/soa4allexecutionengine/</url>
+			<url>http://coconut.tie.nl:8080/nexus-webapp-1.3.1/content/repositories/executionengine/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>

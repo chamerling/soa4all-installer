@@ -137,6 +137,7 @@
 			<spec txt="Service Discovery Service (WSDL) *FIXME : Local service?* : " size="100"
 				set="http://km.aifb.kit.edu/services/soa4all-discovery/axis2/services/ServiceDiscovery?wsdl" />
 		</field>
+		<!-- URL OK -->
 		<field type="text" variable="installer.designtimecomposer.semanticlinkoperator">
 			<spec txt="Semantic Link Operator Endpoint : " size="100" 
 				set="http://$installer.tomcat.hostname:$installer.tomcat.http/semantic-link-operator/services/SemanticLinkOperator"/>
@@ -184,8 +185,9 @@
 			<spec txt="Human Tasks Service Service (WSDL): *FIXME : Explain*" size="100"
 				set="http://213.27.211.120:9080/axis2/services/TaskManagementServices?wsdl" />
 		</field>
+		<!-- URL OK -->
 		<field type="text" variable="installer.processeditor.dtc">
-			<spec txt="Design Time Composer Service (WSDL): *FIXME : Axis2 service URL*" size="100" 
+			<spec txt="Design Time Composer Service (WSDL):" size="100" 
 				set="http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-service-construction-design-time-composer/services/DTComposer?wsdl"/>
 		</field>
 		<field type="text" variable="installer.processeditor.optimizer">
@@ -193,8 +195,8 @@
 				set="http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-service-construction-optimizer/services/services/KPI-Optimizer?wsdl"/>
 		</field>
 		<field type="text" variable="installer.processeditor.deployer">
-			<spec txt="Deployer Service (WSDL): *FIXME : Local component?*" size="100" 
-				set="http://demo.cefriel.it:8084/axis2/services/LPMDeployer?wsdl"/>
+			<spec txt="Deployer Service (WSDL): *FIXME : Axis2 service URL?*" size="100" 
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/services/LPMDeployer?wsdl"/>
 		</field>
 		<field type="space" />
 		<field type="space" />
@@ -295,7 +297,7 @@
 		
 		<field type="text" variable="installer.sweet.servername">
 			<spec txt="Server Name : " size="100"
-				set="iserve-dev.kmi.open.ac.uk/iserve" />
+				set="$installer.tomcat.hostname/sweet" />
 		</field>
 		<field type="text" variable="installer.sweet.sesameserverurl">
 			<spec txt="Sesame Server URL : " size="100" 

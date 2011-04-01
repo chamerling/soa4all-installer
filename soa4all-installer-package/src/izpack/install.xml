@@ -90,10 +90,11 @@
 		<panel classname="UserInputPanel" id="sesame" />
 		<panel classname="UserInputPanel" id="dashboard" />
 		<panel classname="UserInputPanel" id="spices" />
-		<panel classname="UserInputPanel" id="luf" />
-		<panel classname="UserInputPanel" id="dtc" />
-		<panel classname="UserInputPanel" id="slo" />
+		<panel classname="UserInputPanel" id="deployer" />
 		<panel classname="UserInputPanel" id="optimizer" />
+		<panel classname="UserInputPanel" id="luf" />
+		<panel classname="UserInputPanel" id="slo" />
+		<panel classname="UserInputPanel" id="dtc" />
 		<panel classname="UserInputPanel" id="processeditor" />
 		<panel classname="UserInputPanel" id="iserve" />
 		<panel classname="UserInputPanel" id="sweet" />
@@ -102,7 +103,6 @@
 		<panel classname="UserInputPanel" id="storage" />
 		<panel classname="UserInputPanel" id="wsmolite" />
 		<panel classname="UserInputPanel" id="processengine" />
-		<panel classname="UserInputPanel" id="deployer" />
 		 
 		<panel classname="SummaryPanel"/>
 		<panel classname="InstallPanel" />
@@ -166,12 +166,11 @@
 			<description>Configure and install the SOA4All Studio Dashboard</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
 			<fileset dir="SOA4ALL/wars/soa4all-coredashboard-gwt-main"
-				targetdir="$INSTALL_PATH/tmp/wars/soa4all-coredashboard-gwt-main" />
+				targetdir="$INSTALL_PATH/tmp/wars/dashboard" />
 
-			<!-- <file src="./res/soa4all-coredashboard-gwt-main/WEB-INF/classes/soa4all-modules.cfg.xml" 
-				targetdir="$INSTALL_PATH/tmp/wars/soa4all-coredashboard-gwt-main/WEB-INF/classes/" 
-				/> <parsable targetfile="$INSTALL_PATH/tmp/wars/soa4all-coredashboard-gwt-main/WEB-INF/classes/soa4all-modules.cfg.xml" 
-				/> -->
+			<file src="./res/dashboard/WEB-INF/classes/soa4all-modules-cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/dashboard/WEB-INF/classes/" />
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/dashboard/WEB-INF/classes/soa4all-modules-cfg.xml" />
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
 		</pack>
@@ -180,12 +179,12 @@
 			<description>Configure and install Spices (Consuption Platform)</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
 			<fileset dir="SOA4ALL/wars/soa4all-consumptionplatform-webapp"
-				targetdir="$INSTALL_PATH/tmp/wars/soa4all-consumptionplatform-webapp" />
+				targetdir="$INSTALL_PATH/tmp/wars/spices" />
+				
+			<file src="./res/spices/cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/spices/" />
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/spices/cfg.xml" />
 
-			<!-- <file src="./res/soa4all-coredashboard-gwt-main/WEB-INF/classes/soa4all-modules.cfg.xml" 
-				targetdir="$INSTALL_PATH/tmp/wars/soa4all-coredashboard-gwt-main/WEB-INF/classes/" 
-				/> <parsable targetfile="$INSTALL_PATH/tmp/wars/soa4all-coredashboard-gwt-main/WEB-INF/classes/soa4all-modules.cfg.xml" 
-				/> -->
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
 		</pack>
@@ -200,10 +199,14 @@
 			<!-- Copying files needed for configuration into the temporary directory -->
 			<file src="./res/linkeduserfeedback/WEB-INF/config.properties"
 				targetdir="$INSTALL_PATH/tmp/wars/linkeduserfeedback/WEB-INF/" />
+			<file src="./res/linkeduserfeedback/cfg.xml"
+				targetdir="$INSTALL_PATH/tmp/wars/linkeduserfeedback/" />
 
 			<!-- Parsing files with good variables values -->
 			<parsable
 				targetfile="$INSTALL_PATH/tmp/wars/linkeduserfeedback/WEB-INF/config.properties" />
+			<parsable
+				targetfile="$INSTALL_PATH/tmp/wars/linkeduserfeedback/cfg.xml" />
 
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
@@ -213,14 +216,17 @@
 			preselected="no">
 			<description>Configure and install the Design Time Composer</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
-			<fileset dir="SOA4ALL/wars/soa4all-service-construction-design-time-composer" targetdir="$INSTALL_PATH/tmp/wars/soa4all-service-construction-design-time-composer" />
+			<fileset dir="SOA4ALL/wars/soa4all-service-construction-design-time-composer" targetdir="$INSTALL_PATH/tmp/wars/designtimecomposer" />
 			<!-- Copying files needed for configuration into the temporary directory -->
 			<file src="./res/designtimecomposer/WEB-INF/classes/dtcomposer-service-configuration.xml"
-				targetdir="$INSTALL_PATH/tmp/wars/soa4all-service-construction-design-time-composer/WEB-INF/classes/" />
-
+				targetdir="$INSTALL_PATH/tmp/wars/designtimecomposer/WEB-INF/classes/" />
+			<file src="./res/designtimecomposer/cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/designtimecomposer/" />
+		
 			<!-- Parsing files with good variables values -->
 			<parsable
-				targetfile="$INSTALL_PATH/tmp/wars/soa4all-service-construction-design-time-composer/WEB-INF/classes/dtcomposer-service-configuration.xml" />
+				targetfile="$INSTALL_PATH/tmp/wars/designtimecomposer/WEB-INF/classes/dtcomposer-service-configuration.xml" />
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/designtimecomposer/cfg.xml" />
 
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
@@ -230,7 +236,11 @@
 			preselected="no">
 			<description>Configure and install the Semantic Link Operator</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
-			<fileset dir="SOA4ALL/wars/semantic-link-operator" targetdir="$INSTALL_PATH/tmp/wars/semantic-link-operator" />
+			<fileset dir="SOA4ALL/wars/semantic-link-operator" targetdir="$INSTALL_PATH/tmp/wars/semanticlinkoperator" />
+			
+			<file src="./res/semanticlinkoperator/cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/semanticlinkoperator/" />
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/semanticlinkoperator/cfg.xml" />
 
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
@@ -240,8 +250,12 @@
 			preselected="no">
 			<description>Configure and install the Service Construction Optimizer</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
-			<fileset dir="SOA4ALL/wars/soa4all-service-construction-optimizer" targetdir="$INSTALL_PATH/tmp/wars/soa4all-service-construction-optimizer" />
+			<fileset dir="SOA4ALL/wars/soa4all-service-construction-optimizer" targetdir="$INSTALL_PATH/tmp/wars/optimizer" />
 
+			<file src="./res/optimizer/cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/optimizer/" />
+
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/optimizer/cfg.xml" />
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
 		</pack>
@@ -250,13 +264,16 @@
 			preselected="no">
 			<description>Configure and install the Process Editor</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
-			<fileset dir="SOA4ALL/wars/soa4all-dashboard-gwt-module-composer" targetdir="$INSTALL_PATH/tmp/wars/soa4all-dashboard-gwt-module-composer" />
+			<fileset dir="SOA4ALL/wars/soa4all-dashboard-gwt-module-composer" targetdir="$INSTALL_PATH/tmp/wars/processeditor" />
 
 			<file src="./res/processeditor/soa4all-composer-config.xml"
 				targetdir="$INSTALL_PATH/tmp/home/" />
+			<file src="./res/processeditor/cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/processeditor/" />
 
 			<parsable
 				targetfile="$INSTALL_PATH/tmp/home/soa4all-composer-config.xml" />
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/processeditor/cfg.xml" />
 			
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
@@ -267,8 +284,15 @@
 			<depends packname="Sesame"/>
 			<description>Configure and install iServe</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
-			<fileset dir="SOA4ALL/wars/soa4all-iserve" targetdir="$INSTALL_PATH/tmp/wars/soa4all-iserve" />
-			<!-- TODO : Parse configuration file -->
+			<fileset dir="SOA4ALL/wars/soa4all-iserve" targetdir="$INSTALL_PATH/tmp/wars/iserve" />
+			
+			<file src="./res/iserve/config.properties"
+				targetdir="$INSTALL_PATH/tmp/wars/iserve/" />
+			<file src="./res/iserve/cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/iserve/" />
+			
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/iserve/config.properties" />
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/iserve/cfg.xml" />
 
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
@@ -279,9 +303,11 @@
 <!-- 			<depends packname="Sesame"/> -->
 			<description>Configure and install the Grounding Editor</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
-			<fileset dir="SOA4ALL/wars/studio-grounding-editor" targetdir="$INSTALL_PATH/tmp/wars/studio-grounding-editor" />
-			<!-- TODO : Parse configuration file -->
+			<fileset dir="SOA4ALL/wars/studio-grounding-editor" targetdir="$INSTALL_PATH/tmp/wars/groundingeditor" />
 
+			<file src="./res/groundingeditor/cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/groundingeditor/" />
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/groundingeditor/cfg.xml" />
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
 		</pack>
@@ -291,9 +317,10 @@
 <!-- 			<depends packname="Sesame"/> -->
 			<description>Configure and install the Grounding Service</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
-			<fileset dir="SOA4ALL/wars/studio-grounding-service/groundingService" targetdir="$INSTALL_PATH/tmp/wars/studio-grounding-service" />
-			<!-- TODO : Parse configuration file -->
-
+			<fileset dir="SOA4ALL/wars/studio-grounding-service/groundingService" targetdir="$INSTALL_PATH/tmp/wars/groundingservice" />
+			<file src="./res/groundingservice/cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/groundingservice/" />
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/groundingservice/cfg.xml" />
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
 		</pack>
@@ -303,15 +330,19 @@
 <!-- 			<depends packname="Sesame"/> -->
 			<description>Configure and install the Studio Storage</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
-			<fileset dir="SOA4ALL/wars/studio-storage/storage/" targetdir="$INSTALL_PATH/tmp/wars/studio-storage" />
+			<fileset dir="SOA4ALL/wars/studio-storage/storage/" targetdir="$INSTALL_PATH/tmp/wars/storage" />
 			<!-- TODO : Parse storage.properties file -->
 			
 			<file src="./res/storage/WEB-INF/classes/storage.properties"
-				targetdir="$INSTALL_PATH/tmp/wars/studio-storage/WEB-INF/classes/" />
+				targetdir="$INSTALL_PATH/tmp/wars/storage/WEB-INF/classes/" />
+			<file src="./res/storage/cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/storage/" />
 
 			<!-- Parsing files with good variables values -->
 			<parsable
-				targetfile="$INSTALL_PATH/tmp/wars/studio-storage/WEB-INF/classes/storage.properties" />
+				targetfile="$INSTALL_PATH/tmp/wars/storage/WEB-INF/classes/storage.properties" />
+				
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/storage/cfg.xml" />
 
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
@@ -322,8 +353,13 @@
 <!-- 			<depends packname="Sesame"/> -->
 			<description>Configure and install the WSMO Lite</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
-			<fileset dir="SOA4ALL/wars/studio-wsmolite-editor" targetdir="$INSTALL_PATH/tmp/wars/studio-wsmolite-editor" />
+			<fileset dir="SOA4ALL/wars/studio-wsmolite-editor" targetdir="$INSTALL_PATH/tmp/wars/wsmolite" />
 
+			<file src="./res/wsmolite/cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/wsmolite/" />
+
+			<!-- Parsing files with good variables values -->
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/wsmolite/cfg.xml" />
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
 		</pack>
@@ -333,14 +369,16 @@
 <!-- 			<depends packname="Sesame"/> -->
 			<description>Configure and install Sweet</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
-			<fileset dir="SOA4ALL/wars/studio-sweet" targetdir="$INSTALL_PATH/tmp/wars/studio-sweet" />
+			<fileset dir="SOA4ALL/wars/studio-sweet" targetdir="$INSTALL_PATH/tmp/wars/sweet" />
 
 			<file src="./res/sweet/WEB-INF/config.properties"
-				targetdir="$INSTALL_PATH/tmp/wars/studio-sweet/WEB-INF/" />
-
+				targetdir="$INSTALL_PATH/tmp/wars/sweet/WEB-INF/" />
+			<file src="./res/sweet/cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/sweet/" />
 			<!-- Parsing files with good variables values -->
 			<parsable
-				targetfile="$INSTALL_PATH/tmp/wars/studio-sweet/WEB-INF/config.properties" />
+				targetfile="$INSTALL_PATH/tmp/wars/sweet/WEB-INF/config.properties" />
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/sweet/cfg.xml" />
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
 		</pack>
@@ -351,6 +389,10 @@
 			<description>Configure and install the Process Engine</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
 			<fileset dir="SOA4ALL/wars/processengine" targetdir="$INSTALL_PATH/tmp/wars/processengine" />
+			
+			<file src="./res/processengine/cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/processengine/" />
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/processengine/cfg.xml" />
 
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
@@ -362,7 +404,9 @@
 			<description>Configure and install the Deployer</description>
 			<!-- Copying all the files from the WAR to a temporary directory -->
 			<fileset dir="SOA4ALL/wars/deployer" targetdir="$INSTALL_PATH/tmp/wars/deployer" />
-
+			<file src="./res/deployer/cfg.xml" 
+				targetdir="$INSTALL_PATH/tmp/wars/deployer/" />
+			<parsable targetfile="$INSTALL_PATH/tmp/wars/deployer/cfg.xml" />
 			<!-- All is parsed, Ant will do the rest... @see AntActionsSpec.xml and 
 				soa4all-ant.xml -->
 		</pack>

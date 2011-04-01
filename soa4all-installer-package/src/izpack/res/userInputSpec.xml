@@ -57,7 +57,7 @@
 		<field type="space" />
 
 		<field type="staticText" align="left"
-			txt="Note : The Dashboard Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-coredashboard-gwt-main, click 'Next' for next installation step..." />
+			txt="Note : The Dashboard Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/dashboard, click 'Next' for next installation step..." />
 	</panel>
 	
 	<panel id="spices">
@@ -69,7 +69,7 @@
 		<field type="space" />
 		
 		<field type="staticText" align="left"
-			txt="Note : The Spices Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-consumptionplatform-webapp, click 'Next' for next installation step..." />
+			txt="Note : The Spices Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/spices/, click 'Next' for next installation step..." />
 	</panel>
 
 	<!-- linkeduserfeedback module configuration -->
@@ -90,13 +90,13 @@
 		</field>
 		<!-- FIXME : Is it the local instance? -->
 		<field type="text" variable="installer.linkeduserfeedback.LUFBaseUri">
-			<spec txt="LUFBaseUri *FIXME : local instance?*: " size="100" set="http://soa4all.isoco.net/luf/" />
+			<spec txt="LUFBaseUri *FIXME : local instance?*: " size="100" set="http://$installer.tomcat.hostname:$installer.tomcat.http/linkeduserfeedback/" />
 		</field>
 		<field type="space" />
 		<field type="space" />
 		
 		<field type="staticText" align="left"
-			txt="Note : The Linked User Feedback Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/linkeduserfeedback, click 'Next' for next installation step..." />
+			txt="Note : The Linked User Feedback Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/linkeduserfeedback/, click 'Next' for next installation step..." />
 	</panel>
 	
 	<!-- Design Time Composer -->
@@ -115,13 +115,13 @@
 		<!-- URL OK -->
 		<field type="text" variable="installer.designtimecomposer.semanticlinkoperator">
 			<spec txt="Semantic Link Operator Endpoint : " size="100" 
-				set="http://$installer.tomcat.hostname:$installer.tomcat.http/semantic-link-operator/services/SemanticLinkOperator"/>
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/semanticlinkoperator/services/SemanticLinkOperator"/>
 		</field>
 		<field type="space" />
 		<field type="space" />
 		
 		<field type="staticText" align="left"
-			txt="Note : The Design Time Composer Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-service-construction-design-time-composer, click 'Next' for next installation step..." />
+			txt="Note : The Design Time Composer Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/designtimecomposer/, click 'Next' for next installation step..." />
 	
 	</panel>
 	
@@ -134,7 +134,7 @@
 		<field type="space" />
 		<field type="space" />
 		<field type="staticText" align="left"
-			txt="Note : The Semantic Link Operator will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/semantic-link-operator/, click 'Next' for next installation step..." />
+			txt="Note : The Semantic Link Operator will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/semanticlinkoperator/, click 'Next' for next installation step..." />
 	</panel>
 	
 	<panel id="optimizer">
@@ -145,7 +145,7 @@
 		<field type="space" />
 		<field type="space" />
 		<field type="staticText" align="left"
-			txt="Note : The Service Construction Optimizer will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-service-construction-optimizer/, click 'Next' for next installation step..." />
+			txt="Note : The Service Construction Optimizer will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/optimizer/, click 'Next' for next installation step..." />
 	</panel>
 	
 	<panel id="processeditor">
@@ -163,11 +163,11 @@
 		<!-- URL OK -->
 		<field type="text" variable="installer.processeditor.dtc">
 			<spec txt="Design Time Composer Service (WSDL):" size="100" 
-				set="http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-service-construction-design-time-composer/services/DTComposer?wsdl"/>
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/designtimecomposer/services/DTComposer?wsdl"/>
 		</field>
 		<field type="text" variable="installer.processeditor.optimizer">
 			<spec txt="Optimizer Service (WSDL):" size="100" 
-				set="http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-service-construction-optimizer/services/Optimizer?wsdl"/>
+				set="http://$installer.tomcat.hostname:$installer.tomcat.http/optimizer/services/Optimizer?wsdl"/>
 		</field>
 		<field type="text" variable="installer.processeditor.deployer">
 			<spec txt="Deployer Service (WSDL):" size="100" 
@@ -177,7 +177,7 @@
 		<field type="space" />
 		
 		<field type="staticText" align="left"
-			txt="Note : The Process Editor Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-dashboard-gwt-module-composer, click 'Next' for next installation step..." />
+			txt="Note : The Process Editor Web application will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/processeditor/, click 'Next' for next installation step..." />
 	</panel>
 	
 	<panel id="iserve">
@@ -190,7 +190,7 @@
 
 		<field type="text" variable="installer.iserve.servername">
 			<spec txt="Server Name : " size="100"
-				set="$installer.tomcat.hostname:$installer.tomcat.http/soa4all-iserve/" />
+				set="$installer.tomcat.hostname:$installer.tomcat.http/iserve/" />
 		</field>
 		<field type="text" variable="installer.iserve.sesameserverurl">
 			<spec txt="Sesame Server URL : " size="100" 
@@ -215,7 +215,7 @@
 		<field type="space" />
 		<field type="space" />
 		<field type="staticText" align="left"
-			txt="Note : iServe will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/soa4all-iserve/, click 'Next' for next installation step..." />
+			txt="Note : iServe will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/iserve/, click 'Next' for next installation step..." />
 	</panel>
 	
 	<panel id="groundingeditor">
@@ -226,7 +226,7 @@
 		<field type="space" />
 		<field type="space" />
 		<field type="staticText" align="left"
-			txt="Note : The Grounding Editor Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/studio-grounding-editor/, click 'Next' for next installation step..." />
+			txt="Note : The Grounding Editor Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/groundingeditor/, click 'Next' for next installation step..." />
 	</panel>
 	
 	<panel id="groundingservice">
@@ -237,7 +237,7 @@
 		<field type="space" />
 		<field type="space" />
 		<field type="staticText" align="left"
-			txt="Note : The Grounding Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/studio-grounding-service/, click 'Next' for next installation step..." />
+			txt="Note : The Grounding Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/groundingservice/, click 'Next' for next installation step..." />
 	</panel>
 	
 	<panel id="storage">
@@ -248,7 +248,7 @@
 		<field type="space" />
 		<field type="space" />
 		<field type="staticText" align="left"
-			txt="Note : The Storage Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/studio-storage/, click 'Next' for next installation step..." />
+			txt="Note : The Storage Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/storage/, click 'Next' for next installation step..." />
 	</panel>
 	
 	<panel id="wsmolite">
@@ -259,7 +259,7 @@
 		<field type="space" />
 		<field type="space" />
 		<field type="staticText" align="left"
-			txt="Note : The WSMO Lite Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/studio-wsmolite-editor/, click 'Next' for next installation step..." />
+			txt="Note : The WSMO Lite Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/wsmolite/, click 'Next' for next installation step..." />
 	</panel>
 	
 	<panel id="sweet">
@@ -272,7 +272,7 @@
 		
 		<field type="text" variable="installer.sweet.servername">
 			<spec txt="Server Name : " size="100"
-				set="$installer.tomcat.hostname:$installer.tomcat.http/studio-sweet/" />
+				set="$installer.tomcat.hostname:$installer.tomcat.http/sweet/" />
 		</field>
 		<field type="text" variable="installer.sweet.sesameserverurl">
 			<spec txt="Sesame Server URL : " size="100" 
@@ -296,7 +296,7 @@
 		</field>
 		<field type="space" />
 		<field type="staticText" align="left"
-			txt="Note : The Sweet Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/studio-sweet/, click 'Next' for next installation step..." />
+			txt="Note : The Sweet Service will be available at http://$installer.tomcat.hostname:$installer.tomcat.http/sweet/, click 'Next' for next installation step..." />
 	</panel>
 	
 	<panel id="processengine">

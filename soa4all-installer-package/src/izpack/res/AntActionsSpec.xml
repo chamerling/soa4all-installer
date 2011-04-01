@@ -6,9 +6,9 @@
 	<pack name="Dashboard">
 		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
 			<property name="install.path" value="$INSTALL_PATH" />
-			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/soa4all-coredashboard-gwt-main/" />
-			<property name="war.file" value="$INSTALL_PATH/soa4all-coredashboard-gwt-main.war" />
-			<property name="webapp.name" value="soa4all-coredashboard-gwt-main" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/dashboard/" />
+			<property name="war.file" value="$INSTALL_PATH/dashboard.war" />
+			<property name="webapp.name" value="dashboard" />
 			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
 			<target name="init" />
 			<target name="package-war" />
@@ -32,9 +32,9 @@
 	<pack name="Spices">
 		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
 			<property name="install.path" value="$INSTALL_PATH" />
-			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/soa4all-consumptionplatform-webapp/" />
-			<property name="war.file" value="$INSTALL_PATH/soa4all-consumptionplatform-webapp.war" />
-			<property name="webapp.name" value="soa4all-consumptionplatform-webapp" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/spices/" />
+			<property name="war.file" value="$INSTALL_PATH/spices.war" />
+			<property name="webapp.name" value="spices" />
 			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
 			<target name="init" />
 			<target name="package-war" />
@@ -58,9 +58,9 @@
 	<pack name="DesignTimeComposer">
 		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
 			<property name="install.path" value="$INSTALL_PATH" />
-			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/soa4all-service-construction-design-time-composer/" />
-			<property name="war.file" value="$INSTALL_PATH/soa4all-service-construction-design-time-composer.war" />
-			<property name="webapp.name" value="soa4all-service-construction-design-time-composer" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/designtimecomposer/" />
+			<property name="war.file" value="$INSTALL_PATH/designtimecomposer.war" />
+			<property name="webapp.name" value="designtimecomposer" />
 			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
 			<target name="init" />
 			<target name="package-war" />
@@ -71,9 +71,9 @@
 	<pack name="SemanticLinkOperator">
 		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
 			<property name="install.path" value="$INSTALL_PATH" />
-			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/semantic-link-operator/" />
-			<property name="war.file" value="$INSTALL_PATH/semantic-link-operator.war" />
-			<property name="webapp.name" value="semantic-link-operator" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/semanticlinkoperator/" />
+			<property name="war.file" value="$INSTALL_PATH/semanticlinkoperator.war" />
+			<property name="webapp.name" value="semanticlinkoperator" />
 			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
 			<target name="init" />
 			<target name="package-war" />
@@ -84,9 +84,9 @@
 	<pack name="Optimizer">
 		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
 			<property name="install.path" value="$INSTALL_PATH" />
-			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/soa4all-service-construction-optimizer/" />
-			<property name="war.file" value="$INSTALL_PATH/soa4all-service-construction-optimizer.war" />
-			<property name="webapp.name" value="soa4all-service-construction-optimizer" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/optimizer/" />
+			<property name="war.file" value="$INSTALL_PATH/optimizer.war" />
+			<property name="webapp.name" value="optimizer" />
 			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
 			<target name="init" />
 			<target name="package-war" />
@@ -97,9 +97,9 @@
 	<pack name="ProcessEditor">
 		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
 			<property name="install.path" value="$INSTALL_PATH" />
-			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/soa4all-dashboard-gwt-module-composer/" />
-			<property name="war.file" value="$INSTALL_PATH/soa4all-dashboard-gwt-module-composer.war" />
-			<property name="webapp.name" value="soa4all-dashboard-gwt-module-composer" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/processeditor/" />
+			<property name="war.file" value="$INSTALL_PATH/processeditor.war" />
+			<property name="webapp.name" value="processeditor" />
 			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
 			<property name="file.to.home" value="$INSTALL_PATH/tmp/home/soa4all-composer-config.xml"/>
 			<target name="init" />
@@ -113,9 +113,9 @@
 	<pack name="GroundingEditor">
 		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
 			<property name="install.path" value="$INSTALL_PATH" />
-			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/studio-grounding-editor/" />
-			<property name="war.file" value="$INSTALL_PATH/studio-grounding-editor.war" />
-			<property name="webapp.name" value="studio-grounding-editor" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/groundingeditor/" />
+			<property name="war.file" value="$INSTALL_PATH/groundingeditor.war" />
+			<property name="webapp.name" value="groundingeditor" />
 			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
 			<target name="init" />
 			<target name="package-war" />
@@ -126,9 +126,9 @@
 	<pack name="GroundingService">
 		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
 			<property name="install.path" value="$INSTALL_PATH" />
-			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/studio-grounding-service/" />
-			<property name="war.file" value="$INSTALL_PATH/studio-grounding-service.war" />
-			<property name="webapp.name" value="studio-grounding-service" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/groundingservice/" />
+			<property name="war.file" value="$INSTALL_PATH/groundingservice.war" />
+			<property name="webapp.name" value="groundingservice" />
 			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
 			<target name="init" />
 			<target name="package-war" />
@@ -139,9 +139,9 @@
 	<pack name="Storage">
 		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
 			<property name="install.path" value="$INSTALL_PATH" />
-			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/studio-storage/" />
-			<property name="war.file" value="$INSTALL_PATH/studio-storage.war" />
-			<property name="webapp.name" value="studio-storage" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/storage/" />
+			<property name="war.file" value="$INSTALL_PATH/storage.war" />
+			<property name="webapp.name" value="storage" />
 			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
 			<target name="init" />
 			<target name="package-war" />
@@ -152,9 +152,9 @@
 	<pack name="WSMOLite">
 		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
 			<property name="install.path" value="$INSTALL_PATH" />
-			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/studio-wsmolite-editor/" />
-			<property name="war.file" value="$INSTALL_PATH/studio-wsmolite-editor.war" />
-			<property name="webapp.name" value="studio-wsmolite-editor" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/wsmolite/" />
+			<property name="war.file" value="$INSTALL_PATH/wsmolite.war" />
+			<property name="webapp.name" value="wsmolite" />
 			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
 			<target name="init" />
 			<target name="package-war" />
@@ -165,9 +165,9 @@
 	<pack name="iServe">
 		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
 			<property name="install.path" value="$INSTALL_PATH" />
-			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/soa4all-iserve/" />
-			<property name="war.file" value="$INSTALL_PATH/soa4all-iserve.war" />
-			<property name="webapp.name" value="soa4all-iserve" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/iserve/" />
+			<property name="war.file" value="$INSTALL_PATH/iserve.war" />
+			<property name="webapp.name" value="iserve" />
 			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
 			<target name="init" />
 			<target name="package-war" />
@@ -178,9 +178,9 @@
 	<pack name="Sweet">
 		<antcall order="afterpacks" buildresource="antBuild.xml" verbose="no">
 			<property name="install.path" value="$INSTALL_PATH" />
-			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/studio-sweet/" />
-			<property name="war.file" value="$INSTALL_PATH/studio-sweet.war" />
-			<property name="webapp.name" value="studio-sweet" />
+			<property name="webapp.src.path" value="$INSTALL_PATH/tmp/wars/sweet/" />
+			<property name="war.file" value="$INSTALL_PATH/sweet.war" />
+			<property name="webapp.name" value="sweet" />
 			<property name="tomcat.path" value="$INSTALL_PATH/apache-tomcat" />
 			<target name="init" />
 			<target name="package-war" />

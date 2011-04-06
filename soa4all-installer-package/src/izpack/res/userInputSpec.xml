@@ -156,11 +156,6 @@
 		<field type="space" />
 		<field type="space" />
 
-		<field type="text" variable="installer.processeditor.humantask">
-			<spec txt="Human Tasks Service Service (WSDL): *FIXME : Explain*" size="100"
-				set="http://213.27.211.120:9080/axis2/services/TaskManagementServices?wsdl" />
-		</field>
-		<!-- URL OK -->
 		<field type="text" variable="installer.processeditor.dtc">
 			<spec txt="Design Time Composer Service (WSDL):" size="100" 
 				set="http://$installer.tomcat.hostname:$installer.tomcat.http/designtimecomposer/services/DTComposer?wsdl"/>
@@ -173,6 +168,19 @@
 			<spec txt="Deployer Service (WSDL):" size="100" 
 				set="http://$installer.tomcat.hostname:$installer.tomcat.http/deployer/services/LPMDeployer?wsdl"/>
 		</field>
+		
+		<field type="divider" />
+		
+		<field type="staticText" align="left"
+			txt="Third Party configuration" />
+		<field type="staticText" align="left"
+			txt="The Human Task Service is provided by a third-party component. You will have to download it at http://www.intalio.org/public/maven2/org/intalio/ and to install it on your system if needed." />
+		
+		<field type="text" variable="installer.processeditor.humantask">
+			<spec txt="Human Tasks Service (WSDL):" size="100"
+				set="http://213.27.211.120:9080/axis2/services/TaskManagementServices?wsdl" />
+		</field>
+		
 		<field type="space" />
 		<field type="space" />
 		
